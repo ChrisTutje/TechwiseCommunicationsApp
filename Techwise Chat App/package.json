@@ -1,0 +1,15 @@
+{
+  "name": "areceibo",
+  "version": "1.0.0",
+  "description": "Basic communication app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Chris Tutje",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.2.30",
+    "socket.io": "^2.0.3"
+  }
+}
