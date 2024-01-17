@@ -1,68 +1,23 @@
-
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>space email</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Pixel Plunderers">
+		<meta name="description" content="Send messages into the void!">
+		<title>Project Arecibo</title>
+
 		<link rel="stylesheet" type="text/css" href="tpl/css/pl8.css" />
 		<link rel="stylesheet" type="text/css" href="tpl/css/styles-revised.css" />
 		<link rel="stylesheet" type="text/css" href="tpl/css/client-styles.css" />
 		<link href='https://fonts.googleapis.com/css?family=Anonymous+Pro|Quicksand' rel='stylesheet' type='text/css'>
-		<link rel="shortcut icon" href="tpl/favicon.png" type="image/x-icon">
-		<link rel="icon" href="tpl/favicon.png" type="image/x-icon">
+		<link rel="shortcut icon" href="tpl/images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
+		<link rel="icon" href="tpl/images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
+		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
 		<script src="tpl/js/processing.min.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			sketches = ["tpl/js/vis1.pde", "tpl/js/vis2.pde", "tpl/js/vis3.pde", "tpl/js/vis4.pde", "tpl/js/vis5.pde", "tpl/js/vis6.pde"];
-			sketchIndex = 0;
-
-			// Runs on page load	
-			$(function() {
-				var w, h;
-				w = $('#left-sidebar').css('width');
-				h = $('#left-sidebar').css('height');
-				$("#left-sidebar").prepend('<canvas id="mycanvas" data-processing-sources="tpl/js/vis1.pde" width=' + w + ' height=' + h + '></canvas>');
-
-				$("#next").click(function() {
-					sketchIndex ++;
-					if (sketchIndex > sketches.length - 1) {sketchIndex = 0;}
-
-					$('#mycanvas').remove();
-					var canvasRef = document.createElement('canvas');
-					var p = Processing.loadSketchFromSources(canvasRef, [sketches[sketchIndex]]);
-
-					var w, h;
-					w = $('#left-sidebar').css('width');
-					h = $('#left-sidebar').css('height');
-
-					canvasRef.width = w;
-					canvasRef.height = h;
-					$(canvasRef).attr('id', 'mycanvas');
-					$('#left-sidebar').prepend(canvasRef);
-				});
-
-				$(window).resize(function() {
-						var tOffset = ($('#left-sidebar').height() / 2) - ($('#container').height() / 2);
-						var lOffset = ($('#left-sidebar').width() / 2) - ($('#container').width() / 2);
-						$("#container").css('top', tOffset);
-						$("#container").css('left', lOffset);
-						//console.log(($('#left-sidebar').height() / 2), ($('#container').height() / 2), tOffset);
-				});
-				$(window).trigger('resize');
-
-
-				$('#show-sidebar').hide();
-				$('#hide-sidebar').click(function() {
-					$('#right-sidebar').hide();
-					$('#show-sidebar').show();
-				});
-				$('#show-sidebar').click(function() {
-					$('#right-sidebar').show();
-					$('#show-sidebar').hide();
-				});
-			});
-		</script>
-
+		<script src="tpl/js/sketch.js" type="text/javascript"></script>
 		<script src="tpl/js/script.js" type="text/javascript"></script>
 
 		<script>
@@ -83,38 +38,33 @@
 		<div id="banner-close">
 			<p>x</p>
 		</div>
-		<h2 id="banner-firsttime">Welcome to Arecibo</h2>
+		<h2 id="banner-firsttime">Welcome to Project Arecibo</h2>
 	</div>
 	<div id="banner-info">
 		<h3 class="center-text">Arecibo</h3>
-		<br/>
-		<h3 class="center-text">It's free to make an account!</h3>
+		<h3 class="center-text">Make an account now!</h3>
 		<div class="line" id="buyline">
 			<div class="d-2">
-				<h4>Make account</h4>
+				<h4>Hello, space explorer!</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-					exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
-					aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-					Excepteur sint occaecat cupidatat non proident, 
-					sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+					Making an account with us unlocks some cool features:
+					<ul>
+						<li>Read your previously broadcasted messages</li>
+						<li>Interact directly with other people</li>
+						<li>Access to educational features</li>
+						<li>And many more!</li>
+					</ul>
 				</p>
 			</div>
 			<div class="d-2">
 				<div id="pay-b-container">
 					<form action="signup.php" method="LINK">
-						<input id="b-payme" type="submit" value="Sign up">
+						<button id="b-payme" type="submit">Sign Up</button>
 					</form>
 				</div>
 			</div>
 		</div>
-		<br/>
-		<br/>
 		<p>Enjoy the site!</p>
-		<br/>
-		<br/>
 	</div>
 </div></div>
 		<div id="left-sidebar">
@@ -140,16 +90,16 @@
 						<textarea id="comBody" name="body" maxlength="1000" placeholder="Body" ></textarea>
 						
 						<div class="button-container">
-							<input class="b-back btn" type="button" value="Back" />
-							<input id="b-opt" class="btn" type="button" value="Options" />
-							<input id="b-preview" class="btn" type="button" value="Preview" />
-							<input id="b-send" class="btn" type="button" value="Send" />
+							<button class="b-back btn" type="button">Back</button>
+							<button id="b-opt" class="btn" type="button">Options</button>
+							<button id="b-preview" class="btn" type="button">Preview</button>
+							<button id="b-send" class="btn" type="button">Send</button>
 						</div>
 					</form>
 					<div id="preview-container">
 						<div id="preview"></div>
 						<div class="button-container">
-							<input id="b-pvback" class="btn" type="button" value="Back" />
+							<button id="b-pvback" class="btn" type="button">Back</button>
 						</div>
 					</div>
 					<div id="compose-options-container">
@@ -157,7 +107,7 @@
 							
 						</div>
 						<div class="button-container">
-							<input id="b-cmpback" class="btn" type="button" value="Back" />
+							<button id="b-cmpback" class="btn" type="button">Back</button>
 						</div>
 					</div>
 				</div>
@@ -171,7 +121,8 @@
 					</div>
 					<div id="view"></div>
 					<div class="button-container">
-						<input id="b-vback" class="btn" type="button" value="Back" /><input id="b-flag" class="btn" type="button" value="Report" />
+						<button id="b-vback" class="btn" type="button">Back</button>
+						<button id="b-flag" class="btn" type="button">Report</button>
 					</div>
 				</div>
 				<div id="t-container">
@@ -183,11 +134,10 @@
 					</div>
 					<div class="button-container">
 						<form method="link" action="purchase.php" target="_blank">
-						<input id="b-refresh" class="btn" type="button" value="Refresh">
-						<input id="b-options" class="btn" type="button" value="Options">
-						
-						<input id="b-register" class="btn" type="submit" value="Register">
-						<input id="b-com" class="btn" type="button" value="Compose">
+						<button id="b-refresh" class="btn" type="button">Refresh</button>
+						<button id="b-options" class="btn" type="button">Options</button>
+						<button id="b-register" class="btn" type="button">Register</button>
+						<button id="b-com" class="btn" type="button">Compose</button>
 						<span class="clear"></span>
 						</form>
 					</div>
@@ -196,11 +146,9 @@
 					<div id="options-view">
 						<input type="checkbox" id="filter" name="filter" value="Filter" checked="true">
 						<label for="filter"><span></span>Profanity Filter</label>
-						<br/><br/>
-						
 					</div>
 					<div class="button-container">
-						<input class="b-back btn" type="button" value="Back" />
+						<button class="b-back btn" type="button">Back</button>
 					</div>
 				</div>
 				
@@ -218,13 +166,15 @@
 			<h2>About Arecibo</h2>
 			<section id="sect-what">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-					exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
-					aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-					Excepteur sint occaecat cupidatat non proident, 
-					sunt in culpa qui officia deserunt mollit anim id est laborum.
-					<br/>
+					The <a target="_blank" href="https://en.wikipedia.org/wiki/Arecibo_message">Arecibo message</a>
+					is an interstellar radio broadcast carrying fundamental information about humanity and Earth.
+					Many remember it as our first attempt to communicate with extraterrestrials.
+				</p>
+				<p>
+					With Project Arecibo, you can send out your own messages into the vast expanse of space.
+					Who knows who might read it out there?
+				</p>
+				<p>
 					Press refresh to check for messages. Press compose 
 					to write. Put your name, subject, and message in the 
 					form, and press send. Voila, you have preserved a 
@@ -240,7 +190,7 @@
 				</form>
 			</div> -->
 		</section>
-			<p id="footer">Arecibo Express &copy;2024 <a href="">Always Observing</a></p>
+			<p id="footer">Pixel Plunderers &copy;2024</p>
 		</div>
 	</body>
 </html>
