@@ -85,7 +85,7 @@
 					<!-- Perhaps replace message of the day with the button for finding stats -->
 				</div>
 				<div id="compose-container">
-					<form id="compose" method="post" action="send.php">
+					<form id="compose" method="post" action="http://localhost:3000/send">
 						<input id="comSender" type="text" name="sender" autocomplete="off" placeholder="Sender" />
 						<input id="comSubject" type="text" name="subject" autocomplete="off" placeholder="Subject" />
 						<textarea id="comBody" name="body" maxlength="1000" placeholder="Body" ></textarea>
@@ -94,7 +94,7 @@
 							<button class="b-back btn" type="button">Back</button>
 							<button id="b-opt" class="btn" type="button">Options</button>
 							<button id="b-preview" class="btn" type="button">Preview</button>
-							<button id="b-send" class="btn" type="button">Send</button>
+							<button id="b-send" class="btn" type="submit">Send</button>
 						</div>
 					</form>
 					<div id="preview-container">
