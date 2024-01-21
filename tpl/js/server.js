@@ -28,7 +28,7 @@ app.post('/send', async (req, res) => {
     const timestamp = new Date();
 
     await db.collection('UserAccounts').insertOne({ sender });
-    await db.collection('Messages').insertOne({ subject, body, timestamp });
+    await db.collection('Messages').insertOne({ sender, subject, body, timestamp });
 
     res.send('Message sent successfully!');
   } catch (error) {

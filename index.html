@@ -193,5 +193,28 @@
 		</section>
 			<p id="footer">Pixel Plunderers &copy;2024</p>
 		</div>
+		<script> //input validation
+			document.addEventListener('DOMContentLoaded', function () {
+			  const form = document.getElementById('compose');
+		
+			  form.addEventListener('submit', function (event) {
+				const senderInput = document.getElementById('comSender');
+				const subjectInput = document.getElementById('comSubject');
+				const bodyInput = document.getElementById('comBody');
+		
+				// Check if Subject and Body are empty
+				if (!subjectInput.value || !bodyInput.value) {
+				  alert('Subject and Body are required.');
+				  event.preventDefault(); // Prevent the form submission
+				  return;
+				}
+		
+				// If Sender is empty, set default value to 'anonymous'
+				if (!senderInput.value) {
+				  senderInput.value = 'anonymous';
+				}
+			  });
+			});
+		  </script>
 	</body>
 </html>
