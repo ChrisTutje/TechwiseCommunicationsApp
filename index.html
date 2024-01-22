@@ -92,15 +92,20 @@
 				</div>
 				<div id="compose-container">
 					<form id="compose" method="post" action="http://localhost:3000/send">
-						<input id="comSender" type="text" name="sender" autocomplete="off" placeholder="Sender" />
-						<input id="comSubject" type="text" name="subject" autocomplete="off" placeholder="Subject" />
-						<textarea id="comBody" name="body" maxlength="1000" placeholder="Body" ></textarea>
-						
-						<div class="button-container">
-							<button id="b-preview" class="btn" type="button">Preview</button>
-							<button id="b-send" class="btn" type="submit">Send</button>
-							<button id="b-opt" class="btn" type="button">Options</button>
-							<button class="b-back btn" type="button">Back</button>
+					  <label for="comSender">Sender:</label>
+					  <input id="comSender" type="text" name="sender" autocomplete="off" placeholder="Your Name" />
+			
+					  <label for="comSubject">Subject:</label>
+					  <input id="comSubject" type="text" name="subject" autocomplete="off" placeholder="Subject" />
+			
+					  <label for="comBody">Message:</label>
+					  <textarea id="comBody" name="body" maxlength="1000" placeholder="Write your message here"></textarea>
+			
+					  <div class="button-container">
+						<button id="b-preview" class="btn" type="button">Preview</button>
+						<button id="b-send" class="btn" type="submit">Send</button>
+						<button id="b-opt" class="btn" type="button">Options</button>
+						<button class="b-back btn" type="button">Back</button>
 						</div>
 					</form>
 					<div id="preview-container">
