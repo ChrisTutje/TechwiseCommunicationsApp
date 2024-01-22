@@ -248,16 +248,25 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 999;
-  }
-
-  review {
-    max-width: 100%;
-    height: auto;
+    max-width: 80%; /* Adjust the maximum width as needed */
+    max-height: 80vh; /* Set the maximum height to 80% of the viewport height */
+    overflow-y: auto; /* Add vertical scrollbar if content exceeds the height */
   }
 
   #preview .button-container {
     text-align: center;
     margin-top: 20px;
+  }
+  
+
+  #review {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #preview {
+    max-width: 100%;
+    height: auto;
   }
 
   #preview .btn {
