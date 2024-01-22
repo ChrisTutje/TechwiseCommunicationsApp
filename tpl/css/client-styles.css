@@ -15,7 +15,6 @@
 
 #motd {
     position: absolute;
-    right: 10px;
     color: #ecf0f1;
 }
 
@@ -39,7 +38,10 @@
 /* Form elements */
 #comSender,
 #comSubject,
-#comBody {
+#comBody,
+#regUsername,
+#regPassword,
+#regPasswordConf {
     width: 100%;
     border: 1px solid #2c3e50;
     background-color: rgba(48, 48, 48, 0.42);
@@ -160,6 +162,19 @@ body {
 #container {
     width: 400px;
     height: 550px;
+    margin: 0 auto;
+    padding: 20px;
+    position: absolute;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    background-color: #34495e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Ensure the content appears above the video */
+}
+
+#regContainer {
+    width: 400px;
+    height: 200px;
     margin: 0 auto;
     padding: 20px;
     position: absolute;
