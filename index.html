@@ -32,6 +32,7 @@
 	</head>
 
 	<body>
+		</div>
 		<div style="position:fixed;left:0;top:0;width:100%;height:100%;opacity:0;z-index:-1;"><!--comment required--></div>
 		<div><div id="bannerbody">
 	<div id="banner">
@@ -84,7 +85,7 @@
 					<!-- Perhaps replace message of the day with the button for finding stats -->
 				</div>
 				<div id="compose-container">
-					<form id="compose" method="post" action="send.php">
+					<form id="compose" method="post" action="http://localhost:3000/send">
 						<input id="comSender" type="text" name="sender" autocomplete="off" placeholder="Sender" />
 						<input id="comSubject" type="text" name="subject" autocomplete="off" placeholder="Subject" />
 						<textarea id="comBody" name="body" maxlength="1000" placeholder="Body" ></textarea>
@@ -93,7 +94,7 @@
 							<button class="b-back btn" type="button">Back</button>
 							<button id="b-opt" class="btn" type="button">Options</button>
 							<button id="b-preview" class="btn" type="button">Preview</button>
-							<button id="b-send" class="btn" type="button">Send</button>
+							<button id="b-send" class="btn" type="submit">Send</button>
 						</div>
 					</form>
 					<div id="preview-container">
@@ -192,5 +193,28 @@
 		</section>
 			<p id="footer">Pixel Plunderers &copy;2024</p>
 		</div>
+		<script> //input validation
+			document.addEventListener('DOMContentLoaded', function () {
+			  const form = document.getElementById('compose');
+		
+			  form.addEventListener('submit', function (event) {
+				const senderInput = document.getElementById('comSender');
+				const subjectInput = document.getElementById('comSubject');
+				const bodyInput = document.getElementById('comBody');
+		
+				// Check if Subject and Body are empty
+				if (!subjectInput.value || !bodyInput.value) {
+				  alert('Subject and Body are required.');
+				  event.preventDefault(); // Prevent the form submission
+				  return;
+				}
+		
+				// If Sender is empty, set default value to 'anonymous'
+				if (!senderInput.value) {
+				  senderInput.value = 'anonymous';
+				}
+			  });
+			});
+		  </script>
 	</body>
 </html>
