@@ -1,0 +1,206 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Game</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let bullets = [];
+        let asteroids = []; 
+        let isMoving = false;
+
+        function updateGame() {
+            clearCanvas();
+            moveSpaceship();
+            drawSpaceship();
+            moveBullets();
+            drawBullets();
+            spawnAsteroids();
+            moveAsteroids();
+            drawAsteroids();
+            checkCollisions();
+        }
+// gotta figgure out how to get the bullets to stay with the ship 
+        function shoot() {
+        const bulletSpeed = 5;
+        const bulletAngle = spaceship.angle;
+        bullets.push({ x: spaceship.x, y: spaceship.y, speed: 5, angle: -90 }); // -90 corresponds to facing upwards 
+
+
+        // Calculate the position based on the front/top of the arrow
+        const bulletX = spaceship.x + spaceship.size / 2 * Math.cos(bulletAngle * (Math.PI / 180));
+        const bulletY = spaceship.y + spaceship.size / 2 * Math.sin(bulletAngle * (Math.PI / 180));
+
+        bullets.push({ x: bulletX, y: bulletY, speed: bulletSpeed, angle: bulletAngle });
+    }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function moveSpaceship() {
+            if (isMoving) {
+                const speed = 2;
+                spaceship.x += speed * Math.cos(spaceship.angle * (Math.PI / 180));
+                spaceship.y += speed * Math.sin(spaceship.angle * (Math.PI / 180));
+
+                if (spaceship.x < 0) spaceship.x = canvas.width;
+                if (spaceship.x > canvas.width) spaceship.x = 0;
+                if (spaceship.y < 0) spaceship.y = canvas.height;
+                if (spaceship.y > canvas.height) spaceship.y = 0;
+            }
+        }
+
+    let spaceship = { x: canvas.width / 2, y: canvas.height / 2, size: 20, angle: -90 }; // Start with the ship facing up
+
+    function drawSpaceship() {
+        ctx.save();
+        ctx.translate(spaceship.x, spaceship.y);
+        ctx.rotate(spaceship.angle * (Math.PI / 0));
+        ctx.fillStyle = "#00ff00";
+        ctx.beginPath();
+        ctx.moveTo(0, -spaceship.size);
+        ctx.lineTo(spaceship.size, spaceship.size);
+        ctx.lineTo(0, spaceship.size / 2);
+        ctx.lineTo(-spaceship.size, spaceship.size);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+    }
+
+        function moveBullets() {
+            for (let i = 0; i < bullets.length; i++) {
+                bullets[i].x += bullets[i].speed * Math.cos(bullets[i].angle * (Math.PI / 180));
+                bullets[i].y += bullets[i].speed * Math.sin(bullets[i].angle * (Math.PI / 180));
+
+                if (bullets[i].x < 0 || bullets[i].x > canvas.width || bullets[i].y < 0 || bullets[i].y > canvas.height) {
+                    bullets.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function drawBullets() {
+        ctx.fillStyle = "#ff0000";
+        for (let i = 0; i < bullets.length; i++) {
+            ctx.beginPath();
+            ctx.arc(bullets[i].x, bullets[i].y, 3, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        }
+
+        function spawnAsteroids() {
+            if (Math.random() < 0.02) {
+                asteroids.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: 20,
+                    angle: Math.random() * 360,
+                    speed: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function moveAsteroids() {
+            for (let i = 0; i < asteroids.length; i++) {
+                asteroids[i].x += asteroids[i].speed * Math.cos(asteroids[i].angle * (Math.PI / 180));
+                asteroids[i].y += asteroids[i].speed * Math.sin(asteroids[i].angle * (Math.PI / 180));
+
+                if (asteroids[i].x < 0) asteroids[i].x = canvas.width;
+                if (asteroids[i].x > canvas.width) asteroids[i].x = 0;
+                if (asteroids[i].y < 0) asteroids[i].y = canvas.height;
+                if (asteroids[i].y > canvas.height) asteroids[i].y = 0;
+            }
+        }
+
+        function drawAsteroids() {
+            ctx.fillStyle = "#999999";
+            for (let i = 0; i < asteroids.length; i++) {
+                ctx.beginPath();
+                ctx.arc(asteroids[i].x, asteroids[i].y, asteroids[i].radius, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+        }
+
+        function checkCollisions() {
+            for (let i = 0; i < asteroids.length; i++) {
+                for (let j = 0; j < bullets.length; j++) {
+                    const distance = Math.sqrt(
+                        (asteroids[i].x - bullets[j].x) ** 2 + (asteroids[i].y - bullets[j].y) ** 2
+                    );
+                    if (distance < asteroids[i].radius) {
+                        asteroids.splice(i, 1);
+                        bullets.splice(j, 1);
+                        i--;
+                        break;
+                    }
+                }
+
+                const distanceToSpaceship = Math.sqrt(
+                    (asteroids[i].x - spaceship.x) ** 2 + (asteroids[i].y - spaceship.y) ** 2
+                );
+                if (distanceToSpaceship < spaceship.size) {
+                    // Game over or handle collision as needed
+                    resetGame();
+                }
+            }
+        }
+
+        function resetGame() {
+            spaceship.x = canvas.width / 2;
+            spaceship.y = canvas.height / 2;
+            bullets = [];
+            asteroids = [];
+        }
+
+        function keyDownHandler(e) {
+            switch (e.key) {
+                case "ArrowUp":
+                    isMoving = true;
+                    break;
+                case "ArrowLeft":
+                    spaceship.angle -= 5;
+                    break;
+                case "ArrowRight":
+                    spaceship.angle += 5;
+                    break;
+                case " ":
+                case "Spacebar":
+                    shoot();
+                    break;
+                case "Shift":
+                    teleport();
+                    break;
+            }
+        }
+
+        function teleport() {
+            spaceship.x = Math.random() * canvas.width;
+            spaceship.y = Math.random() * canvas.height;
+        }
+
+        function keyUpHandler(e) {
+            if (e.key === "ArrowUp") {
+                isMoving = false;
+            }
+        }
+
+        document.addEventListener("keydown", keyDownHandler, false);
+        document.addEventListener("keyup", keyUpHandler, false);
+
+        setInterval(updateGame, 20);
+    </script>
+</body>
+</html>
