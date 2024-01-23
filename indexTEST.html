@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,215 +15,212 @@
     <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro|Quicksand' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="tpl/images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
     <link rel="icon" href="tpl/images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
-    
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="tpl/js/processing.min.js" type="text/javascript"></script>
     <script src="tpl/js/sketch.js" type="text/javascript"></script>
     <script src="tpl/js/script.js" type="text/javascript"></script>
-
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-51076234-1', 'galaxybuster.net');
-        ga('send', 'pageview');
-    </script>
 </head>
+
 <body>
-    <body>
+    <div style="position:fixed;left:0;top:0;width:100%;height:100%;opacity:0;z-index:-1;">
+        <!--comment required-->
     </div>
-    <div style="position:fixed;left:0;top:0;width:100%;height:100%;opacity:0;z-index:-1;"><!--comment required--></div>
-    <div><div id="bannerbody">
-<div id="banner">
-    <div id="banner-close">
-        <p>x</p>
-    </div>
-    <h2 id="banner-firsttime">Welcome to Project Arecibo</h2>
-</div>
-<div id="banner-info">
-    <h3 class="center-text">Arecibo</h3>
-    <h3 class="center-text">Make an account now!</h3>
-    <div class="line" id="buyline">
-        <div class="d-2">
-            <h4>Hello, space explorer!</h4>
-            <p>
-                Making an account with us unlocks some cool features:
-                <ul>
-                    <li>Read your previously broadcasted messages</li>
-                    <li>Interact directly with other people</li>
-                    <li>Access to educational features</li>
-                    <li>And many more!</li>
-                </ul>
-            </p>
-        </div>
-        <div class="d-2">
-            <div id="pay-b-container">
-                <form action="signup.php" method="LINK">
-                    <button id="b-payme" type="submit">Sign Up</button>
-                </form>
+    <div>
+        <div id="bannerbody">
+            <div id="banner">
+                <div id="banner-close">
+                    <p>x</p>
+                </div>
+                <h2 id="banner-firsttime">Welcome to Project Arecibo</h2>
+                <div id="hint">Clickable</div>
+            </div>
+            <div id="banner-info">
+                <h3 class="center-text">Arecibo</h3>
+                <h3 class="center-text">Make an account now!</h3>
+                <div class="line" id="buyline">
+                    <div class="d-2">
+                        <h4>Hello, space explorer!</h4>
+                        <p>
+                            Making an account with us unlocks some cool features:
+                            <ul>
+                                <li>Read your previously broadcasted messages</li>
+                                <li>Interact directly with other people</li>
+                                <li>Access to educational features</li>
+                                <li>And many more!</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="d-2">
+                        <div id="pay-b-container">
+                            <form action="signup.html" method="LINK">
+                                <button id="b-payme" type="submit">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <p>Enjoy the site!</p>
             </div>
         </div>
-    </div>
-    <p>Enjoy the site!</p>
-</div>
-</div></div>
-    <div id="left-sidebar">
-        <div id="dash">
-            <span id="dash-user-welcome"><a href='login.php'>Login</a></span>
-            
-        </div>
-        <span id="show-sidebar">SHOW</span>
-        <!--<audio autoplay loop>
-            <source src="tpl/media/track1.mp3" />
-        </audio>-->
-        <div id="container">
-            <div id="titlebar">
-                <span id="notif-spin" class="invis"><div class="r1"></div><div class="r2"></div><div class="r3"></div></span>
-                <span id="notif"></span>
-                <span id="motd">TechWise Placeholder</span>
-                <!-- Perhaps replace message of the day with the button for finding stats -->
+        <div id="left-sidebar">
+            <div id="dash">
+                <span id="dash-user-welcome"><a href='login.php'>Login</a></span>
             </div>
-            <div id="compose-container">
-                <form id="compose" method="post" action="http://localhost:3000/send">
-                    <input id="comSender" type="text" name="sender" autocomplete="off" placeholder="Sender" />
-                    <input id="comSubject" type="text" name="subject" autocomplete="off" placeholder="Subject" />
-                    <textarea id="comBody" name="body" maxlength="1000" placeholder="Body" ></textarea>
-                    
+            <span id="show-sidebar">SHOW</span>
+
+            <div id="container">
+                <div id="titlebar">
+                    <span id="notif-spin" class="invis">
+                        <div class="r1"></div>
+                        <div class="r2"></div>
+                        <div class="r3"></div>
+                    </span>
+                    <span id="notif"></span>
+                    <span id="motd">TechWise Placeholder</span>
+                    <!-- Perhaps replace message of the day with the button for finding stats -->
+                </div>
+                <div id="compose-container">
+                    <form id="compose" method="post" action="http://localhost:3000/send">
+                        <label for="comSender">Sender:</label>
+                        <input id="comSender" type="text" name="sender" autocomplete="off" placeholder="Your Name" />
+
+                        <label for="comSubject">Subject:</label>
+                        <input id="comSubject" type="text" name="subject" autocomplete="off" placeholder="Subject" />
+
+                        <label for="comBody">Message:</label>
+                        <textarea id="comBody" name="body" maxlength="1000" placeholder="Write your message here"></textarea>
+
+                        <div class="button-container">
+                            <button id="b-preview" class="btn" type="button">Preview</button>
+                            <button id="b-send" class="btn" type="submit">Send</button>
+                            <button id="b-opt" class="btn" type="button">Options</button>
+                            <button class="b-back btn" type="button">Back</button>
+                        </div>
+                    </form>
+                    <div id="preview-container">
+                        <div id="preview"></div>
+                        <div class="button-container">
+                            <button id="b-pvback" class="btn" type="button">Back</button>
+                        </div>
+                    </div>
+                    <div id="compose-options-container">
+                        <div id="compose-options-view">
+
+                        </div>
+                        <div class="button-container">
+                            <button id="b-cmpback" class="btn" type="button">Back</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="view-container">
+                    <div class="spinner" id="vspinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                    <div id="view"></div>
+                    <div class="button-container">
+                        <button id="b-vback" class="btn" type="button">Back</button>
+                        <button id="b-flag" class="btn" type="button">Report</button>
+                    </div>
+                </div>
+                <div id="t-container">
+                    <div id="inbox">
+                        <div class="row-header" id="inbox-header">
+                            <span class="left">From</span>
+                            <span class="right">Subject</span>
+                        </div>
+                    </div>
+                    <div id="b-container">
+                        <form method="link" action="purchase.php" target="_blank">
+                            <button id="b-refresh" class="btn" type="button">Refresh</button>
+                            <button id="b-com" class="btn" type="button">Compose</button>
+                            <button id="b-options" class="btn" type="button">Options</button>
+                            <button id="b-register" class="btn" type="button">Register</button>
+                            <span class="clear"></span>
+                        </form>
+                    </div>
+                </div>
+                <div id="options-container">
+                    <div id="options-view">
+                        <input type="checkbox" id="filter" name="filter" value="Filter" checked="true">
+                        <label for="filter"><span></span>Profanity Filter</label>
+                    </div>
                     <div class="button-container">
                         <button class="b-back btn" type="button">Back</button>
-                        <button id="b-opt" class="btn" type="button">Options</button>
-                        <button id="b-preview" class="btn" type="button">Preview</button>
-                        <button id="b-send" class="btn" type="submit">Send</button>
-                    </div>
-                </form>
-                <div id="preview-container">
-                    <div id="preview"></div>
-                    <div class="button-container">
-                        <button id="b-pvback" class="btn" type="button">Back</button>
-                    </div>
-                </div>
-                <div id="compose-options-container">
-                    <div id="compose-options-view">
-                        
-                    </div>
-                    <div class="button-container">
-                        <button id="b-cmpback" class="btn" type="button">Back</button>
                     </div>
                 </div>
             </div>
-            <div id="view-container">
-                <div class="spinner" id="vspinner">
-                    <div class="rect1"></div>
-                    <div class="rect2"></div>
-                    <div class="rect3"></div>
-                    <div class="rect4"></div>
-                    <div class="rect5"></div>
-                </div>
-                <div id="view"></div>
-                <div class="button-container">
-                    <button id="b-vback" class="btn" type="button">Back</button>
-                    <button id="b-flag" class="btn" type="button">Report</button>
-                </div>
+            <div id="bg-controls" class="unselectable">
+                <button id="change-background-button">Change Background</button>
+
+                <script>
+                    // Add your JavaScript code here to handle button click and change the background
+                    $(document).ready(function () {
+                        const videoBackground = document.getElementById('video-background');
+                        const gifBackground = "tpl/css/Background-gif1.mp4";
+                        let isVideo = true;
+
+                        $("#change-background-button").click(function () {
+                            // Toggle between video and gif backgrounds
+                            videoBackground.src = isVideo ? gifBackground : "tpl/css/background-video.mp4";
+                            videoBackground.load(); // Reload the video to apply the change
+                            videoBackground.play(); // Play the video
+                            isVideo = !isVideo;
+                        });
+                    });
+                </script>
             </div>
-            <div id="t-container">
-                <div id="inbox">
-                    <div class="row-header" id="inbox-header">
-                        <span class="left">From</span>
-                        <span class="right">Subject</span>
-                    </div>
-                </div>
-                <div id="b-container">
-                    <form method="link" action="purchase.php" target="_blank">
-                        <button id="b-refresh" class="btn" type="button">Refresh</button>
-                        <button id="b-com" class="btn" type="button">Compose</button>
-                        <button id="b-options" class="btn" type="button">Options</button>
-                        <button id="b-register" class="btn" type="button">Register</button>
-                        <span class="clear"></span>
-                    </form>
-                </div>
-            </div>
-            <div id="options-container">
-                <div id="options-view">
-                    <input type="checkbox" id="filter" name="filter" value="Filter" checked="true">
-                    <label for="filter"><span></span>Profanity Filter</label>
-                </div>
-                <div class="button-container">
-                    <button class="b-back btn" type="button">Back</button>
-                </div>
-            </div>
-            
         </div>
-        <div id="bg-controls" class="unselectable">
-            <span id="next">Other Visuals&#8594;</span>
-            <!-- <span id="bg-switch-prev">&#8592;</span>
-            <span id="bg-name">Original</span>
-            <span id="bg-switch-next">&#8594;</span> -->
+        <div id="right-sidebar">
+            <span id="hide-sidebar">HIDE</span>
+            <h1>Arecibo</h1>
+            <h2>About Arecibo</h2>
+            <section id="sect-what">
+                <p>
+                    The <a target="_blank" href="https://en.wikipedia.org/wiki/Arecibo_message">Arecibo message</a>
+                    is an interstellar radio broadcast carrying fundamental information about humanity and Earth.
+                    Many remember it as our first attempt to communicate with extraterrestrials.
+                </p>
+                <p>
+                    With Project Arecibo, you can send out your own messages into the vast expanse of space.
+                    Who knows who might read it out there?
+                </p>
+                <p>
+                    Press refresh to check for messages. Press compose to write. Put your name, subject, and message in the
+                    form, and press send. Voila, you have preserved a note in time. . .
+                </p>
+            </section>
+            <p id="footer">Pixel Plunderers &copy;2024</p>
         </div>
-    </div>
-    <div id="right-sidebar">
-        <span id="hide-sidebar">HIDE</span>
-        <h1>Arecibo</h1>
-        <h2>About Arecibo</h2>
-        <section id="sect-what">
-            <p>
-                The <a target="_blank" href="https://en.wikipedia.org/wiki/Arecibo_message">Arecibo message</a>
-                is an interstellar radio broadcast carrying fundamental information about humanity and Earth.
-                Many remember it as our first attempt to communicate with extraterrestrials.
-            </p>
-            <p>
-                With Project Arecibo, you can send out your own messages into the vast expanse of space.
-                Who knows who might read it out there?
-            </p>
-            <p>
-                Press refresh to check for messages. Press compose 
-                to write. Put your name, subject, and message in the 
-                form, and press send. Voila, you have preserved a 
-                note in time. . .
-            </p>
-        </section>
-        <!-- <section id="sect-links"><a href="privacy.php">privacy</a> - <a href="terms.php">terms of use</a> - <a href="faq.php">FAQ</a> - <a href="http://space-email-news.tumblr.com#">news/tumblr</a> - <a href="contact.php">contact</a> - <a href="http://www.reddit.com/r/SpaceEmail/">reddit</a></section> -->
-        
-    <!-- <section id="side-bpay">
-        <div id="sidepay-b-container">
-            <form action="purchase.php" method="LINK">
-                <input id="sideb-payme" type="submit" value="Purchase Account">
-            </form>
-        </div> -->
-    </section>
-
-<body>
-    <video id="video-background" autoplay muted loop>
-        <source src="tpl/css/background-video.mp4" type="video/mp4">
-        <!-- Add additional source elements for different video formats if needed -->
-        Your browser does not support the video tag.
-    </video>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('compose');
+                const banner = document.getElementById('banner');
+                const bannerInfo = document.getElementById('banner-info');
 
 
-    <script> //input validation
-        document.addEventListener('DOMContentLoaded', function () {
-          const form = document.getElementById('compose');
-    
-          form.addEventListener('submit', function (event) {
-            const senderInput = document.getElementById('comSender');
-            const subjectInput = document.getElementById('comSubject');
-            const bodyInput = document.getElementById('comBody');
-    
-            // Check if Subject and Body are empty
-            if (!subjectInput.value || !bodyInput.value) {
-              alert('Subject and Body are required.');
-              event.preventDefault(); // Prevent the form submission
-              return;
-            }
-    
-            // If Sender is empty, set default value to 'anonymous'
-            if (!senderInput.value) {
-              senderInput.value = 'anonymous';
-            }
-          });
-        });
-    </script>
-</body>
+                form.addEventListener('submit', function (event) {
+                    const senderInput = document.getElementById('comSender');
+                    const subjectInput = document.getElementById('comSubject');
+                    const bodyInput = document.getElementById('comBody');
 
-</html>
+                    // Check if Subject and Body are empty
+                    if (!subjectInput.value || !bodyInput.value) {
+                        alert('Subject and Body are required.');
+                        event.preventDefault(); // Prevent the form submission
+                        return;
+                    }
+
+                    // If Sender is empty, set default value to 'Unknown Creature'
+                    if (!senderInput.value) {
+                        senderInput.value = 'Unknown Creature';
+                    }
+                });
+            });
+        </script>
+    </body>
+
+    </html>
