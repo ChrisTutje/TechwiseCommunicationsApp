@@ -22,10 +22,10 @@
 		<body>
 			<video id="video-background" autoplay muted loop>
 				<source src="tpl/css/background-video.mp4" type="video/mp4">
-				<!-- Add additional source elements for different video formats if needed -->
+				<source src="tpl/css/Background-gif1.mp4" type="video/mp4">
 				Your browser does not support the video tag.
 			</video>
-
+		
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -87,7 +87,7 @@
 				<div id="titlebar">
 					<span id="notif-spin" class="invis"><div class="r1"></div><div class="r2"></div><div class="r3"></div></span>
 					<span id="notif"></span>
-					<span id="motd">TechWise Placeholder</span>
+					<span id="motd">Incoming Transmission</span>
 					<!-- Perhaps replace message of the day with the button for finding stats -->
 				</div>
 				<div id="compose-container">
@@ -166,10 +166,29 @@
 				
 			</div>
 			<div id="bg-controls" class="unselectable">
-				<span id="next">Other Visuals&#8594;</span>
-				<!-- <span id="bg-switch-prev">&#8592;</span>
-				<span id="bg-name">Original</span>
-				<span id="bg-switch-next">&#8594;</span> -->
+				<button id="change-background-button">Change Background</button>
+
+				<script>
+					// Add your JavaScript code here to handle button click and change the background
+					$(document).ready(function () {
+						const videoBackground = document.getElementById('video-background');
+						const videoSources = [
+							"tpl/css/background-video.mp4",
+							"tpl/css/Background-gif1.mp4"
+						];
+						let currentVideoIndex = 0;
+			
+						$("#change-background-button").click(function () {
+							// Switch to the next video source
+							currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+							
+							// Update the video background source
+							videoBackground.src = videoSources[currentVideoIndex];
+							videoBackground.load(); // Reload the video to apply the change
+							videoBackground.play(); // Play the video
+						});
+					});
+				</script>
 			</div>
 		</div>
 		<div id="right-sidebar">
