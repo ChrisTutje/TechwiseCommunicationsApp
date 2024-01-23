@@ -302,10 +302,6 @@ label
 {
 	color: #0080FF;
 }
-input[type="checkbox"]
-{
-	display: none;
-}
 input[type="checkbox"] + label span
 {
 	display: inline-block;
