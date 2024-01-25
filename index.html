@@ -19,6 +19,7 @@
 		<script src="tpl/js/processing.min.js" type="text/javascript"></script>
 		<script src="tpl/js/sketch.js" type="text/javascript"></script>
 		<script src="tpl/js/script.js" type="text/javascript"></script>
+		<script src="tpl/js/profanityCheck.js" type="text/javascript"></script>
 		<body>
 			<video id="video-background" autoplay muted loop>
 				<source src="tpl/css/background-video.mp4" type="video/mp4">
@@ -103,7 +104,7 @@
 			
 					  <div class="button-container">
 						<button id="b-preview" class="btn" type="button">Preview</button>
-						<button id="b-send" class="btn" type="submit">Send</button>
+						<button id="b-send" class="btn" type="submit" onclick="validateWords(event);">Send</button>
 						<button id="b-opt" class="btn" type="button">Options</button>
 						<button class="b-back btn" type="button">Back</button>
 						</div>
@@ -145,6 +146,7 @@
 						</div>
 					</div>
 					<div id="b-container">
+						<p id="naughty" style="display: none;"></p>
 						<form method="link" action="signup.html" target="_blank">
 							<button id="b-refresh" class="btn" type="button">Refresh</button>
 							<button id="b-com" class="btn" type="button">Compose</button>
