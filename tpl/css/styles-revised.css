@@ -9,7 +9,6 @@ html, body
 body
 {
 	/*background-color:#15181f;*/
-	background-image: url('galaxybackground.avif');
 	background-size: cover;
 	height: 100vh;
 	background-position: center;
@@ -358,19 +357,22 @@ input[type="checkbox"] + label span
 }
 
 /*Shooting Star Graphics*/
+/*issues: the stars won't animate, also, it keeps pushing over the "incoming transmission"
+text, not sure why */
 span
 {
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	top: 30%;
+	left: -60%;
 	width: 4px;
 	height: 4px;
 	background: #fff;
-	border-radius: 50%;
+	border-radius: 100%;
 	box-shadow: 0 0 0 4px rgba(255,255,255,0.1), 
-	0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255,255,255,1);
+	0 0 0 8px rgba(255, 255, 255, 0.1);
 	animation: animate 3s linear infinite;
 }
+
 span::before
 {
 	content: '';
@@ -402,7 +404,7 @@ span::before
 span:nth-child(1)
 {
 	top: 0;
-	right: 0;
+	right: 80;
 	left: initial;
 	animation-delay: 0;
 	animation-duration: 1s;
@@ -410,16 +412,22 @@ span:nth-child(1)
 span:nth-child(2)
 {
 	top: 0;
-	right: 80px;
+	right: 0;
 	left: initial;
-	animation-delay: 0.2s;
-	animation-duration: 3s;
-}
-span:nth-child(3)
+	animation-delay: 0;
+	animation-duration: 1s;
+}span:nth-child(3)
 {
 	top: 0;
-	right: 80px;
+	right: 0;
 	left: initial;
-	animation-delay: 0.4s;
-	animation-duration: 2s;
+	animation-delay: 0;
+	animation-duration: 1s;
+}span:nth-child(4)
+{
+	top: 0;
+	right: 0;
+	left: initial;
+	animation-delay: 0;
+	animation-duration: 1s;
 }
