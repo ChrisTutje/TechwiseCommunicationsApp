@@ -415,7 +415,33 @@ body {
     object-position: center top; /* Adjust as needed (e.g., center center, center bottom, etc.) */
 }
 
+.draggable-container.minimized {
+    height: 50px; /* Set the desired height when minimized */
+    width: 200px; /* Set the desired width when minimized */
+    overflow: hidden; /* Hide the content when minimized */
+}
 
+.toggle-button {
+    position: fixed;
+    top: 92px;
+    right: 57%;
+    cursor: pointer;
+}
+
+.titlebar {
+    position: relative;
+}
+.drag-handle {
+    cursor: move;
+}
+.toggle-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.toggle-button {
+    cursor: pointer;
+}
 
 
 
