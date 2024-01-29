@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000; // Change this back to your desired port
 
 const url = 'mongodb://localhost:27017';
-const dbName = 'Areceibo';
+const dbName = 'Arecibo';
 
 async function connectToDB() {
   const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
