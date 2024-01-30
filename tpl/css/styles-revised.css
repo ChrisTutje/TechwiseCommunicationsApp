@@ -359,7 +359,7 @@ input[type="checkbox"] + label span
 /*Shooting Star Graphics*/
 /*issues: the stars won't animate, also, it keeps pushing over the "incoming transmission"
 text, not sure why */
-span
+/* span
 {
 	position: absolute;
 	top: 30%;
@@ -430,4 +430,4 @@ span:nth-child(2)
 	left: initial;
 	animation-delay: 0;
 	animation-duration: 1s;
-}
+} */
