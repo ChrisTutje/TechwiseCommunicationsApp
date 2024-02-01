@@ -44,9 +44,10 @@ app.post('/send', async (req, res) => {
 const path = require('path');
 
 app.get('/', (req, res) => { // Serve index.html using a relative path
-  const indexPath = path.join(__dirname, 'public', 'index.html');
+  const indexPath = path.join(__dirname, 'index.html');
   res.sendFile(indexPath);
 }); 
+
 
 //app.use(express.static(path.join(__dirname, 'public')));
 
