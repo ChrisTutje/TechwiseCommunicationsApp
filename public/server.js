@@ -43,14 +43,12 @@ app.post('/send', async (req, res) => {
 
 const path = require('path');
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => { // Serve index.html using a relative path
-  const indexPath = path.join(__dirname, 'index.html');
+  const indexPath = path.join(__dirname, 'public', 'index.html');
   res.sendFile(indexPath);
-}); 
-
-
-//app.use(express.static(path.join(__dirname, 'public')));
-
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
