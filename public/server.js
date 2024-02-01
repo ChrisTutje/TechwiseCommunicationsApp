@@ -41,16 +41,14 @@ app.post('/send', async (req, res) => {
   }
 });
 
-/* app.get('/', (req, res) => { 
-  res.sendFile('C:/Users/chris/Documents/QT/TechwiseCommunicationsApp/index.html');
-}); */
-
 const path = require('path');
-
+/*
 app.get('/', (req, res) => { // Serve index.html using a relative path
   const indexPath = path.join(__dirname, '../../index.html');
   res.sendFile(indexPath);
-});
+}); */
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.listen(PORT, () => {
