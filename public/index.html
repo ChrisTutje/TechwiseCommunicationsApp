@@ -22,11 +22,19 @@
 		<script src="../node_modules/shepherd.js/dist/js/shepherd.js" type="module"></script>
 		<script src="../node_modules/shepherd.js/dist/js/shepherd.min.js" type="module"></script>
 		
+		<!--
 		<link rel="stylesheet" type="text/css" href="css/pl8.css" />
 		<link rel="stylesheet" type="text/css" href="css/styles-revised.css" />
 		<link rel="stylesheet" type="text/css" href="css/client-styles.css" />
 		<link rel="stylesheet" type="text/css" href="css/style1.css" /> 
 		<link rel="stylesheet" type="text/css" href="css/style2.css" />
+		-->
+
+		<link rel="stylesheet" type="text/css" href="/home/ec2-user/TechwiseCommunicationsApp/public/css/pl8.css" />
+		<link rel="stylesheet" type="text/css" href="/home/ec2-user/TechwiseCommunicationsApp/public/css/styles-revised.css" />
+		<link rel="stylesheet" type="text/css" href="/home/ec2-user/TechwiseCommunicationsApp/public/css/client-styles.css" />
+		<link rel="stylesheet" type="text/css" href="/home/ec2-user/TechwiseCommunicationsApp/public/css/style1.css" /> 
+		<link rel="stylesheet" type="text/css" href="/home/ec2-user/TechwiseCommunicationsApp/public/css/style2.css" />
 
 		<script src="js/processing.min.js" type="text/javascript"></script>
 		<script src="js/sketch.js" type="text/javascript"></script>
@@ -139,7 +147,7 @@
 					<!-- Perhaps replace message of the day with the button for finding stats -->
 				</div>
 				<div id="compose-container">
-					<form id="compose" method="post" action="http://13.58.237.86:3000/send">
+					<form id="compose" method="post" action="http://3.131.33.187:3000/send">
 						<label for="comSender">Sender:</label>
 						<input id="comSender" type="text" name="sender" autocomplete="off" placeholder="Your Name" />
 				
