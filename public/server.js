@@ -45,14 +45,6 @@ app.post('/send', async (req, res) => {
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Set MIME type for CSS files
-app.use((req, res, next) => {
-  if (req.url.endsWith('.css')) {
-    res.setHeader('Content-Type', 'text/css');
-  }
-  next();
-});
-
 // Disable strict MIME checking globally
 app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -68,3 +60,4 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
