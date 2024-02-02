@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-const PORT = 3000; 
+const PORT = 3000; // Change this back to your desired port
 
 const url = 'mongodb://localhost:27017';
 const dbName = 'Arecibo';
@@ -42,13 +42,22 @@ app.post('/send', async (req, res) => {
   }
 });
 
-app.use('/css', express.static(path.join(__dirname, 'public/css'), {
-  setHeaders: (res, filePath) => {
-    if (path.extname(filePath) === '.css') {
-      res.setHeader('Content-Type', 'text/css');
-    }
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Set MIME type for CSS files
+app.use((req, res, next) => {
+  if (req.url.endsWith('.css')) {
+    res.setHeader('Content-Type', 'text/css');
   }
-}));
+  next();
+});
+
+// Disable strict MIME checking globally
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  next();
+});
 
 // Serve index.html using a relative path
 app.get('/', (req, res) => {
