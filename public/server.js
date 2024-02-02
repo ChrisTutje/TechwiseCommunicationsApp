@@ -1,9 +1,10 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
-const PORT = 3000; // Change this back to your desired port
+const PORT = 3000; 
 
 const url = 'mongodb://localhost:27017';
 const dbName = 'Arecibo';
@@ -41,11 +42,16 @@ app.post('/send', async (req, res) => {
   }
 });
 
-const path = require('path');
+app.use('/css', express.static(path.join(__dirname, 'public/css'), {
+  setHeaders: (res, filePath) => {
+    if (path.extname(filePath) === '.css') {
+      res.setHeader('Content-Type', 'text/css');
+    }
+  }
+}));
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => { // Serve index.html using a relative path
+// Serve index.html using a relative path
+app.get('/', (req, res) => {
   const indexPath = path.join(__dirname, 'index.html');
   res.sendFile(indexPath);
 });
