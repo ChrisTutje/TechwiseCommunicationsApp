@@ -35,7 +35,18 @@
 
 		<link rel="shortcut icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
 		<link rel="icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
-
+	<style>
+		@media screen and (max-width: 950px) {
+  		#bannerbody, #right-sidebar {   
+    		display:none;
+  			}
+		@media screen and (max-width: 450px) {
+		.omar-container, #bg-controls {   
+    		display: none;
+  			}
+		}
+	}	
+	</style>
 	</head>
 
 	<body>
@@ -113,16 +124,15 @@
 		</div>
 
 
-		<div>
-			<img src="images/Kawaii UFO Sprite/omarSpin.gif" class="omar" onclick="OmarTime();"/>
-		</div>
 
 		<div id="left-sidebar">
 			<div id="dash">
 				<span id="dash-user-welcome"><a href='signup.html'>Login</a></span>
 			</div>
+
 			<span id="show-sidebar">SHOW</span>
-		
+
+
 			<div id="container" class="draggable-container">
 				<div class="titlebar">
 					<span id="drag-handle" class="drag-handle">
@@ -139,6 +149,7 @@
 					<span id="motd">Incoming Transmission </span>
 					<!-- Perhaps replace message of the day with the button for finding stats -->
 				</div>
+
 				<div id="compose-container">
 					<form id="compose" method="post" action="http://3.131.33.187:3000/send">
 						<label for="comSender">Sender:</label>
@@ -218,6 +229,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div id="bg-controls" class="unselectable">
 				<button id="change-background-button">Change Background</button>
 
@@ -251,7 +263,6 @@
 				</script>
 			</div>
 		</div>
-
 		<div id="right-sidebar">
 			<span id="hide-sidebar">HIDE</span>
 			<h1>Arecibo</h1>
@@ -272,10 +283,10 @@
 					form, and press send. Voila, you have preserved a 
 					note in time. . .
 				</p>
+				<img src="images/Kawaii UFO Sprite/omarSpin.gif" class="omar" onclick="OmarTime();"/>
 			</section>
 			<p id="footer">Pixel Plunderers &copy;2024</p>
 		</div>
-
 	
 		<script>
 	
