@@ -18,9 +18,9 @@
 		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-		<link href="node_modules/shepherd.js/dist/css/shepherd.css"/>
-		<script src="/node_modules/shepherd.js/dist/js/shepherd.js" type="module" ></script>
-		<script src="/node_modules/shepherd.js/dist/js/shepherd.min.js" type="module" ></script>
+		<link rel="stylesheet" href="/node_modules/shepherd.js/dist/css/shepherd.css" />
+		<script src="/node_modules/shepherd.js/dist/js/shepherd.js" ></script>
+		<script src="/node_modules/shepherd.js/dist/js/shepherd.min.js" ></script>
 		
 		<link rel="stylesheet" type="text/css" href="css/pl8.css" />
 		<link rel="stylesheet" type="text/css" href="css/styles-revised.css" />
@@ -32,7 +32,6 @@
 		<script src="js/sketch.js" type="text/javascript"></script>
 		<script src="js/script.js" type="text/javascript"></script>
 		<script src="js/profanityCheck.js" type="text/javascript"></script>
-		<script src="js/omar.js" type="module"></script>
 
 		<link rel="shortcut icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
 		<link rel="icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
@@ -114,7 +113,9 @@
 		</div>
 
 
-		
+		<div>
+			<img src="images/Kawaii UFO Sprite/omarSpin.gif" class="omar" onclick="OmarTime();"/>
+		</div>
 
 		<div id="left-sidebar">
 			<div id="dash">
@@ -271,7 +272,6 @@
 					form, and press send. Voila, you have preserved a 
 					note in time. . .
 				</p>
-				<img src="images/Kawaii UFO Sprite/Kawaii_UFO_Sprite_-_smile.png" class="omar"/>
 			</section>
 			<p id="footer">Pixel Plunderers &copy;2024</p>
 		</div>
@@ -328,18 +328,16 @@
 				function OmarTime(){
 				console.log("hi omar");
 				const tour = new Shepherd.Tour({
-					defaultStepOptions: {
-						cancelIcon: {
-							enabled: true
-						},
-						classes: 'class-1 class-2',
-						scrollTo: { behavior: 'smooth', block: 'center' }
-					}
+  					useModalOverlay: true,
+  					defaultStepOptions: {
+    					classes: 'shadow-md bg-purple-dark',
+    					scrollTo: true
+  					}
 				});
 						
 				tour.addStep({
-					title: 'Creating a Shepherd Tour',
-					text: 'Creating a Shepherd tour is easy. too! Just create a "Tour" instance, and add as many steps as you want.',
+					title: 'Welcome to Arecibo!',
+					text: 'Hello! My name is O.M.A.R. your Orbital Message Assistance Robot. I will guide you on our adventure through space!',
 					attachTo: {
 						element: '.omar',
 						on: 'bottom'
@@ -347,10 +345,10 @@
 					buttons: [
 						{
 						action() {
-							return this.back();
+							return this.cancel();
 						},
 						classes: 'shepherd-button-secondary',
-						text: 'Back'
+						text: 'Exit'
 						},
 						{
 							action() {
