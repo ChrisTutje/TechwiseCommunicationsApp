@@ -442,9 +442,9 @@ body {
 .toggle-button {
     cursor: pointer;
 }
-.omar{
-    object-position: center top;
-}
+.omar-container {
+    border: 5px solid #e7239c;
+  }
 
 
 
