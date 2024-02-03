@@ -1,7 +1,7 @@
 /* Helper Program that will guide new users through the site. Codename OMAR
 Amber Miller 
 */
-import Shepherd from "shepherd.js";
+import Shepherd from "/node_modules/shepherd.js";
 
 function OmarTime(){
 console.log("hi omar");
