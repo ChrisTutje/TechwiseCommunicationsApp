@@ -43,7 +43,8 @@ app.post('/send', async (req, res) => {
 });
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static("public"));
 
 // Disable strict MIME checking globally
 app.use((req, res, next) => {
