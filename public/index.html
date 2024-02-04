@@ -40,12 +40,13 @@
   		#bannerbody, #right-sidebar {   
     		display:none;
   			}
+		}
 		@media screen and (max-width: 450px) {
 		.omar-container, #bg-controls {   
     		display: none;
   			}
 		}
-	}	
+	
 	</style>
 	</head>
 
@@ -231,7 +232,7 @@
 			</div>
 
 			<div id="bg-controls" class="unselectable">
-				<button id="change-background-button">Change Background</button>
+				<button id="change-background-button" role="button">Change Background</button>
 
 				<script>
 					$(document).ready(function () {
