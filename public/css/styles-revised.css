@@ -302,11 +302,12 @@ input[type="checkbox"] + label span
 	background: #111;
 	cursor: pointer;
 	position: relative;
-	z-index: 0;
+	z-index: 2;
 	border-radius: 10px;
 	user-select: none;
 	-webkit-user-select: none;
 	touch-action: manipulation;
+	
   }
   
   #change-background-button:before {

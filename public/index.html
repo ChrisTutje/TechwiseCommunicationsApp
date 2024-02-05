@@ -230,9 +230,20 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<a href='Space-shooter.html'><button id="specialButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
+				<script>
+				function redirectToSpaceShooter() {
+					
+					window.location.href = 'Space-shooter.html';
+				}
+				</script>
+			</div>
 
 			<div id="bg-controls" class="unselectable">
 				<button id="change-background-button" role="button">Change Background</button>
+				<script></script>
+
 
 				<script>
 					$(document).ready(function () {
@@ -261,6 +272,27 @@
             }, { once: true });
         });
     });
+				</script>
+				<script>
+					
+					 let specialButton = document.getElementById('specialButton');
+
+function checkBackground() {
+	let currentBackground = document.getElementById('video-background').src;
+
+	if (currentBackground.includes('background-gif7.mp4')) {
+		// Show the clickable object for the specific background
+		specialButton.style.display = 'block';
+	} else {
+		// Hide the clickable object for other backgrounds
+		specialButton.style.display = 'none';
+	}
+} 
+
+
+// Call the function on page load and when the background changes
+window.onload = checkBackground;
+document.getElementById('video-background').addEventListener('canplay', checkBackground);
 				</script>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 //board
 let tileSize = 32;
-let rows = 23;
-let columns = 47;
+let rows = 24.5;
+let columns = 45;
 
 let board;
 let boardWidth = tileSize * columns; // 32 * 16
@@ -43,7 +43,7 @@ const alienImageSources = [
 let alienRows = 3;
 let alienColumns = 6;
 let alienCount = 0; //number of aliens to defeat
-let alienVelocityX = 1.5; //alien moving speed
+let alienVelocityX = 2.5; //alien moving speed
 
 //bullets
 let bulletArray = [];
