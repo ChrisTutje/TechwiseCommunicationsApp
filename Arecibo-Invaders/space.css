@@ -1,0 +1,31 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+#board {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;  /* Ensures the video covers the entire screen */
+    z-index: 0;
+}
+
+h1 {
+    position: relative;
+    z-index: 2;  /* Ensure the heading is on top of the video */
+    color: white; /* Adjust the color for better visibility */
+}
