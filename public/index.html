@@ -411,7 +411,8 @@ document.getElementById('video-background').addEventListener('canplay', checkBac
 
 				tour.addStep({
 					title: '3...2...1...Chat!',
-					text: 'Hello! My name is O.M.A.R. your Orbital Message Assistance Robot. I will guide you on our adventure through space!',
+					text: 'Let us get started! Here is where you will be sending messages into fellow astronauts...and maybe a few aliens. Click compose to start your message',
+					advanceOn: { selector: '.b-com', event: 'onclick' },
 					attachTo: {
 						element: '.omar',
 						on: 'bottom'
@@ -435,8 +436,8 @@ document.getElementById('video-background').addEventListener('canplay', checkBac
 				});
 
 				tour.addStep({
-					title: 'Welcome to Arecibo!',
-					text: 'Hello! My name is O.M.A.R. your Orbital Message Assistance Robot. I will guide you on our adventure through space!',
+					title: 'Creating a message',
+					text: 'Here is where you can write your message ',
 					attachTo: {
 						element: '.omar',
 						on: 'bottom'
