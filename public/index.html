@@ -219,32 +219,71 @@
 					</div>
 				</div>
 
-				<script>
-					fetch('http://3.131.33.187:3000/messages')
-						.then(response => {
-							if (!response.ok) {
-								throw new Error('Network response was not ok');
-							}
-							return response.json();
-						})
-						.then(messages => {
-							const inbox = document.getElementById('inbox');
-				
-							messages.forEach(message => {
-								const messageElement = document.createElement('div');
-								messageElement.classList.add('message');
-				
-								const messageContent = document.createElement('p');
-								messageContent.textContent = `${message.sender}: ${message.subject}`;
-				
-								messageElement.appendChild(messageContent);
-								inbox.appendChild(messageElement);
-							});
-						})
-						.catch(error => {
-							console.error('Error fetching messages:', error);
-						});
-				</script>
+				<!-- Modify the script for fetching and displaying messages in index.html -->
+<script>
+    fetch('http://3.131.33.187:3000/messages')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(messages => {
+            const inbox = document.getElementById('inbox');
+
+            // Loop through each message and create HTML elements to display them
+            messages.forEach(message => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+
+                // Create a single paragraph element for each message
+                const messageContent = document.createElement('p');
+                messageContent.textContent = `${message.sender}: ${message.subject}`;
+
+                // Add event listener to show full message on click
+                messageContent.addEventListener('click', () => {
+                    showMessageDetails(message);
+                });
+
+                messageElement.appendChild(messageContent);
+                inbox.appendChild(messageElement);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching messages:', error);
+        });
+
+    // Function to display full message details
+    function showMessageDetails(message) {
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        const modalContent = document.createElement('div');
+        modalContent.classList.add('modal-content');
+
+        const closeBtn = document.createElement('span');
+        closeBtn.classList.add('close-btn');
+        closeBtn.innerHTML = '&times;';
+        closeBtn.addEventListener('click', () => {
+            modal.remove();
+        });
+
+        const messageDetails = document.createElement('p');
+        messageDetails.innerHTML = `
+            <strong>From:</strong> ${message.sender}<br>
+            <strong>Subject:</strong> ${message.subject}<br>
+            <strong>Body:</strong> ${message.body}<br>
+            <strong>Timestamp:</strong> ${new Date(message.timestamp).toLocaleString()}
+        `;
+
+        modalContent.appendChild(closeBtn);
+        modalContent.appendChild(messageDetails);
+        modal.appendChild(modalContent);
+
+        document.body.appendChild(modal);
+    }
+</script>
+
 				<div id="options-container">
 					<div id="options-view">
 						<input type="checkbox" id="filter" name="filter" value="Filter" checked="true">
