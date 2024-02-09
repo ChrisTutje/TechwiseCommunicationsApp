@@ -220,13 +220,16 @@
 				</div>
 
 				<script>
-					// Fetch messages from the server
 					fetch('http://3.131.33.187:3000/messages')
-						.then(response => response.json())
+						.then(response => {
+							if (!response.ok) {
+								throw new Error('Network response was not ok');
+							}
+							return response.json();
+						})
 						.then(messages => {
 							const inbox = document.getElementById('inbox');
 				
-							// Loop through each message and create HTML elements to display them
 							messages.forEach(message => {
 								const messageElement = document.createElement('div');
 								messageElement.classList.add('message');
