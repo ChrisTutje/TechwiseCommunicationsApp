@@ -234,15 +234,10 @@
 								const messageElement = document.createElement('div');
 								messageElement.classList.add('message');
 				
-								const senderElement = document.createElement('p');
-								senderElement.textContent = `From: ${message.sender}`;
+								const messageContent = document.createElement('p');
+								messageContent.textContent = `${message.sender}: ${message.subject}`;
 				
-								const subjectElement = document.createElement('p');
-								subjectElement.textContent = `Subject: ${message.subject}`;
-				
-								messageElement.appendChild(senderElement);
-								messageElement.appendChild(subjectElement);
-				
+								messageElement.appendChild(messageContent);
 								inbox.appendChild(messageElement);
 							});
 						})
