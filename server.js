@@ -58,6 +58,28 @@ app.get('/', (req, res) => {
   res.sendFile(indexPath);
 });
 
+app.get('/', async (req, res) => {
+  let client;
+
+  try {
+    client = await connectToDB();
+    const db = client.db(dbName);
+
+    // Fetch messages from the Messages collection
+    const messages = await db.collection('Messages').find().toArray();
+
+    // Render index.html and pass messages data to it
+    res.render('index', { messages });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).send('Internal Server Error');
+  } finally {
+    if (client) {
+      await client.close();
+    }
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

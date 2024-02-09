@@ -218,6 +218,35 @@
 						</form>
 					</div>
 				</div>
+
+				<script>
+					// Fetch messages from the server
+					fetch('http://3.131.33.187:3000/messages')
+						.then(response => response.json())
+						.then(messages => {
+							const inbox = document.getElementById('inbox');
+				
+							// Loop through each message and create HTML elements to display them
+							messages.forEach(message => {
+								const messageElement = document.createElement('div');
+								messageElement.classList.add('message');
+				
+								const senderElement = document.createElement('p');
+								senderElement.textContent = `From: ${message.sender}`;
+				
+								const subjectElement = document.createElement('p');
+								subjectElement.textContent = `Subject: ${message.subject}`;
+				
+								messageElement.appendChild(senderElement);
+								messageElement.appendChild(subjectElement);
+				
+								inbox.appendChild(messageElement);
+							});
+						})
+						.catch(error => {
+							console.error('Error fetching messages:', error);
+						});
+				</script>
 				<div id="options-container">
 					<div id="options-view">
 						<input type="checkbox" id="filter" name="filter" value="Filter" checked="true">
