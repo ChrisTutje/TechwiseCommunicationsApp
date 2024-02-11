@@ -286,6 +286,8 @@
 			</div>
 			<div>
 				<a href='Space-shooter.html'><button id="specialButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
+				<a href='Space-shooter.html'><button id="educationButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
+
 				<script>
 				function redirectToSpaceShooter() {
 					
@@ -331,18 +333,24 @@
 				<script>
 					
 					 let specialButton = document.getElementById('specialButton');
+					 let educationButton = document.getElementById('educationButton');
 
 function checkBackground() {
 	let currentBackground = document.getElementById('video-background').src;
+        let specialButton = document.getElementById('specialButton');
+        let educationButton = document.getElementById('educationButton');
 
-	if (currentBackground.includes('background-gif7.mp4')) {
-		// Show the clickable object for the specific background
-		specialButton.style.display = 'block';
-	} else {
-		// Hide the clickable object for other backgrounds
-		specialButton.style.display = 'none';
+	 if (currentBackground.includes('background-gif7.mp4') || currentBackground.includes('background-gif5.mp4')) {
+            // Show the buttons for the specific backgrounds
+            specialButton.style.display = 'block';
+            educationButton.style.display = 'block';
+        } else {
+            // Hide the buttons for other backgrounds
+            specialButton.style.display = 'none';
+            educationButton.style.display = 'none';
 	}
 } 
+
 
 
 // Call the function on page load and when the background changes
