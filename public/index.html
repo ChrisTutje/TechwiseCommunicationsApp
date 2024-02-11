@@ -286,7 +286,7 @@
 			</div>
 			<div>
 				<a href='Space-shooter.html'><button id="specialButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
-				<a href='Space-shooter.html'><button id="educationButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
+				<a href='Space-shooter.html'><button id="educationButton" class="educationalButton space-invader" role="button" onclick="redirectToSpaceShooter()">Educational Button</button></a>
 
 
 				<script>
@@ -337,20 +337,20 @@
     let currentBackground = document.getElementById('video-background').src;
 
     let specialButton = document.getElementById('specialButton');
-    let educationalButton = document.getElementById('educationButton');
+    let educationButton = document.getElementById('educationButton');
 
     if (currentBackground.includes('background-gif7.mp4')) {
         // Show the special button on background number 7
         specialButton.style.display = 'block';
-        educationalButton.style.display = 'none'; // Hide the educational button on other backgrounds
+        educationButton.style.display = 'none'; // Hide the educational button on other backgrounds
     } else if (currentBackground.includes('background-gif5.mp4')) {
         // Show the educational button on background number 5
-        educationalButton.style.display = 'block';
+        educationButton.style.display = 'block';
         specialButton.style.display = 'none'; // Hide the special button on other backgrounds
     } else {
         // Hide both buttons on other backgrounds
         specialButton.style.display = 'none';
-        educationalButton.style.display = 'none';
+        educationButton.style.display = 'none';
     }
 }
 
