@@ -163,10 +163,6 @@
 				
 						<label for="comBody">Message:</label>
 						<textarea id="comBody" name="body" maxlength="1000" placeholder="Write your message here"></textarea>
-
-						<div id="successMessage" style="display: none;">
-							Message uploaded successfully!
-						</div>
 				
 						<div class="button-container">
 							<button id="b-preview" class="btn" type="button">Preview</button>
@@ -569,16 +565,6 @@ document.getElementById('video-background').addEventListener('canplay', checkBac
 					id: 'end'
 				});
 						
-				tour.start();}
-
-				function showSuccessMessage() {
-            		document.getElementById('successMessage').style.display = 'block';
-            		setTimeout(function() {
-                	document.getElementById('successMessage').style.display = 'none';
-            		}, 3000); // Hide the message after 3 seconds
-        	}
-				
-				
-			</script>
+				tour.start();}</script>
 	</body>
 </html>
