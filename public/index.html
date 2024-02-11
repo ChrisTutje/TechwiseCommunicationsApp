@@ -18,9 +18,8 @@
 		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-		<link rel="stylesheet" href="/node_modules/shepherd.js/dist/css/shepherd.css" />
-		<script src="/node_modules/shepherd.js/dist/js/shepherd.js" ></script>
-		<script src="/node_modules/shepherd.js/dist/js/shepherd.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/css/shepherd.css"/>
 		
 		<link rel="stylesheet" type="text/css" href="css/pl8.css" />
 		<link rel="stylesheet" type="text/css" href="css/styles-revised.css" />
@@ -46,6 +45,10 @@
     		display: none;
   			}
 		}
+
+		.message:hover {
+        outline: #2980b9 solid 2px;
+    }
 	
 	</style>
 	</head>
@@ -133,11 +136,10 @@
 
 			<span id="show-sidebar">SHOW</span>
 
-
 			<div id="container" class="draggable-container">
 				<div class="titlebar">
 					<span id="drag-handle" class="drag-handle">
-						Click here to drag
+						Click to drag
 						
 					</span>
 					<span>
@@ -154,10 +156,10 @@
 				<div id="compose-container">
 					<form id="compose" method="post" action="http://3.131.33.187:3000/send">
 						<label for="comSender">Sender:</label>
-						<input id="comSender" type="text" name="sender" autocomplete="off" placeholder="Your Name" />
+						<input id="comSender" type="text" name="sender" maxlength="15" autocomplete="off" placeholder="Your Name" />
 				
 						<label for="comSubject">Subject:</label>
-						<input id="comSubject" type="text" name="subject" autocomplete="off" placeholder="Subject" />
+						<input id="comSubject" type="text" name="subject" maxlength="15" autocomplete="off" placeholder="Subject" />
 				
 						<label for="comBody">Message:</label>
 						<textarea id="comBody" name="body" maxlength="1000" placeholder="Write your message here"></textarea>
@@ -220,6 +222,58 @@
 						</form>
 					</div>
 				</div>
+
+				<script>
+					fetch('http://3.131.33.187:3000/messages')
+						.then(response => {
+							if (!response.ok) {
+								throw new Error('Network response was not ok');
+							}
+							return response.json();
+						})
+						.then(messages => {
+							const inbox = document.getElementById('inbox');
+				
+							messages.forEach(message => {
+								const messageElement = document.createElement('div');
+								messageElement.classList.add('message');
+				
+								const messageContent = document.createElement('p');
+								messageContent.textContent = `${message.sender}: ${message.subject}`;
+				
+								messageContent.addEventListener('click', () => {
+									toggleMessageDetails(message);
+								});
+				
+								messageElement.appendChild(messageContent);
+								inbox.appendChild(messageElement);
+							});
+						})
+						.catch(error => {
+							console.error('Error fetching messages:', error);
+						});
+				
+					function toggleMessageDetails(message) {
+						const messageDetails = document.createElement('div');
+						messageDetails.classList.add('message-details');
+				
+						messageDetails.innerHTML = `
+							<strong>From:</strong> ${message.sender}<br>
+							<strong>Subject:</strong> ${message.subject}<br>
+							<strong>Body:</strong> ${message.body}<br>
+							<strong>Timestamp:</strong> ${new Date(message.timestamp).toLocaleString()}
+						`;
+				
+						const existingDetails = document.querySelector('.message-details');
+						if (existingDetails) {
+							existingDetails.remove();
+						} else {
+							const clickedMessage = event.target;
+							clickedMessage.parentNode.appendChild(messageDetails);
+						}
+					}
+				</script>
+
 				<div id="options-container">
 					<div id="options-view">
 						<input type="checkbox" id="filter" name="filter" value="Filter" checked="true">
@@ -232,6 +286,9 @@
 			</div>
 			<div>
 				<a href='Space-shooter.html'><button id="specialButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
+				<a href='Space-shooter.html'><button id="educationButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
+
+
 				<script>
 				function redirectToSpaceShooter() {
 					
@@ -240,6 +297,7 @@
 				</script>
 			</div>
 
+		
 			<div id="bg-controls" class="unselectable">
 				<button id="change-background-button" role="button">Change Background</button>
 				<script></script>
@@ -275,19 +333,27 @@
 				</script>
 				<script>
 					
-					 let specialButton = document.getElementById('specialButton');
+					function checkBackground() {
+    let currentBackground = document.getElementById('video-background').src;
 
-function checkBackground() {
-	let currentBackground = document.getElementById('video-background').src;
+    let specialButton = document.getElementById('specialButton');
+    let educationalButton = document.getElementById('educationButton');
 
-	if (currentBackground.includes('background-gif7.mp4')) {
-		// Show the clickable object for the specific background
-		specialButton.style.display = 'block';
-	} else {
-		// Hide the clickable object for other backgrounds
-		specialButton.style.display = 'none';
-	}
-} 
+    if (currentBackground.includes('background-gif7.mp4')) {
+        // Show the special button on background number 7
+        specialButton.style.display = 'block';
+        educationalButton.style.display = 'none'; // Hide the educational button on other backgrounds
+    } else if (currentBackground.includes('background-gif5.mp4')) {
+        // Show the educational button on background number 5
+        educationalButton.style.display = 'block';
+        specialButton.style.display = 'none'; // Hide the special button on other backgrounds
+    } else {
+        // Hide both buttons on other backgrounds
+        specialButton.style.display = 'none';
+        educationalButton.style.display = 'none';
+    }
+}
+
 
 
 // Call the function on page load and when the background changes
@@ -295,6 +361,7 @@ window.onload = checkBackground;
 document.getElementById('video-background').addEventListener('canplay', checkBackground);
 				</script>
 			</div>
+
 		</div>
 		<div id="right-sidebar">
 			<span id="hide-sidebar">HIDE</span>
@@ -316,7 +383,11 @@ document.getElementById('video-background').addEventListener('canplay', checkBac
 					form, and press send. Voila, you have preserved a 
 					note in time. . .
 				</p>
-				<img src="images/Kawaii UFO Sprite/omarSpin.gif" class="omar" onclick="OmarTime();"/>
+				<div>
+					<div class="speechBox sbdownleft" :before>Need help? Click me!</div>
+					<img src="images/Kawaii UFO Sprite/omarSpin.gif" class="omar" onclick="OmarTime();"/>
+					
+					</div>
 			</section>
 			<p id="footer">Pixel Plunderers &copy;2024</p>
 		</div>
@@ -402,6 +473,107 @@ document.getElementById('video-background').addEventListener('canplay', checkBac
 						}
 					],
 					id: 'creating'
+				});
+
+				tour.addStep({
+					title: '3...2...1...Chat!',
+					text: 'Let us get started! Here is where you will be sending messages into fellow astronauts...and maybe a few aliens. Click compose to start your message',
+					advanceOn: { selector: '.b-com', event: 'onclick' },
+					attachTo: {
+						element: '.omar',
+						on: 'bottom'
+					},
+					buttons: [
+						{
+						action() {
+							return this.back();
+						},
+						classes: 'shepherd-button-secondary',
+						text: 'Back'
+						},
+						{
+							action() {
+								return this.next();
+							},
+							text: 'Next'
+						}
+					],
+					id: 'step1'
+				});
+
+				tour.addStep({
+					title: 'Creating a message',
+					text: 'Here is where you can write your message ',
+					attachTo: {
+						element: '.omar',
+						on: 'bottom'
+					},
+					buttons: [
+						{
+						action() {
+							return this.back();
+						},
+						classes: 'shepherd-button-secondary',
+						text: 'Back'
+						},
+						{
+							action() {
+								return this.next();
+							},
+							text: 'Next'
+						}
+					],
+					id: 'step2'
+				});
+
+				tour.addStep({
+					title: 'Welcome to Arecibo!',
+					text: 'Hello! My name is O.M.A.R. your Orbital Message Assistance Robot. I will guide you on our adventure through space!',
+					attachTo: {
+						element: '.omar',
+						on: 'bottom'
+					},
+					buttons: [
+						{
+						action() {
+							return this.back();
+						},
+						classes: 'shepherd-button-secondary',
+						text: 'Back'
+						},
+						{
+							action() {
+								return this.next();
+							},
+							text: 'Next'
+						}
+					],
+					id: 'step3'
+				});
+
+				tour.addStep({
+					title: 'Welcome to Arecibo!',
+					text: 'Hello! My name is O.M.A.R. your Orbital Message Assistance Robot. I will guide you on our adventure through space!',
+					attachTo: {
+						element: '.omar',
+						on: 'bottom'
+					},
+					buttons: [
+						{
+						action() {
+							return this.back();
+						},
+						classes: 'shepherd-button-secondary',
+						text: 'Back'
+						},
+						{
+							action() {
+								return this.complete();
+							},
+							text: 'Exit'
+						}
+					],
+					id: 'end'
 				});
 						
 				tour.start();}</script>

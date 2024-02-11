@@ -43,7 +43,6 @@ app.post('/send', async (req, res) => {
 });
 
 // Serve static files
-//app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static("public"));
 
 // Disable strict MIME checking globally
@@ -56,6 +55,28 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   const indexPath = path.join(__dirname, 'index.html');
   res.sendFile(indexPath);
+});
+
+app.get('/messages', async (req, res) => {
+  let client;
+
+  try {
+      client = await connectToDB();
+      const db = client.db(dbName);
+
+      // Fetch messages from the Messages collection
+      const messages = await db.collection('Messages').find().toArray();
+
+      // Send messages as JSON response
+      res.json(messages);
+  } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  } finally {
+      if (client) {
+          await client.close();
+      }
+  }
 });
 
 app.listen(PORT, () => {
