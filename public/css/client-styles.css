@@ -530,12 +530,12 @@ body {
   }
   .educationalButton,
   .educationalButton:after {
-    width: 150px;
-    height: 76px;
+    width: 130px;
+    height: 86px;
     line-height: 78px;
     font-size: 20px;
     font-family: 'Bebas Neue', sans-serif;
-    background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+    background: linear-gradient(45deg, transparent 5%, #70edff 5%);
     border: 0;
     color: #fff;
     letter-spacing: 3px;
@@ -545,6 +545,8 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    top: -175px;
+    left: 100px;
   }
   
   .educationalButton:after {
@@ -555,20 +557,20 @@ body {
     --slice-4: inset(40% -6px 43% 0);
     --slice-5: inset(80% -6px 5% 0);
     
-    content: 'PLANET';
+    content: 'DESTROY';
     display: block;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #00c6ff 5%);
     text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
     clip-path: var(--slice-0);
   }
   
   .educationalButton:hover:after {
-    animation: 1s glitch;
+    animation: 2.5s glitch;
     animation-timing-function: steps(2, end);
   }
   
@@ -622,7 +624,7 @@ body {
   @media (min-width: 768px) {
     .educationalButton,
     .educationalButton:after {
-      width: 200px;
+      width: 140px;
       height: 86px;
       line-height: 88px;
     }
