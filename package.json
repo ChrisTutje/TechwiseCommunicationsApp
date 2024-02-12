@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "http-server .",
-    "dev": "nodemon v1/server.js"
+    "dev": "nodemon server.js"
   },
   "type": "module"
 }

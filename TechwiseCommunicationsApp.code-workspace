@@ -1,16 +1,13 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "../web-dev"
-		},
-		{
-			"path": "../authentication-authorization-expressjs-tutorial-starterfiles"
-		}
-	],
-	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "TechwiseCommunicationsApp"
-	}
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../authentication-authorization-expressjs-tutorial-starterfiles"
+        }
+    ],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "TechwiseCommunicationsApp"
+    }
 }

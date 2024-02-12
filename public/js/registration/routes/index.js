@@ -1,4 +1,5 @@
 import express from "express"; // import the express module
+import Auth from './auth.js';
 
 const app = express(); // Create an app object
 
@@ -18,4 +19,5 @@ app.get("/v1", (req, res) => {
         });
     }
 });
+app.use('/v1/auth', Auth);
 export default app;
