@@ -54,9 +54,15 @@
 	</head>
 
 	<body>
-		<section>
-			<span.star></span.star>
-		</section>
+		<audio controls autoplay loop>
+			<source src="bgmusic2v2.wav" type="audio/wav"> 
+
+			Your browser does not support audio.
+		</audio>
+		
+		<a href="https://eyes.nasa.gov/apps/exo/#/"> <img id="clickablesun" src="sun.png" height ="200px" width="200px"></img>
+		<a href="https://www.youtube.com/watch?v=OVe72eMY_pk"> <img id="lilguy" src="pixelalien.png" height ="200px" width="200px"></img>
+		<a href="https://eyes.nasa.gov/apps/solar-system/#/home"><button id="nasasolarsystem">Our Home, the Milky Way...</button>
 		
 		<video id="video-background" autoplay muted loop>
 			<source src="css/background-video.mp4" type="video/mp4">
@@ -355,6 +361,31 @@
         // Hide both buttons on other backgrounds
         specialButton.style.display = 'none';
         educationButton.style.display = 'none';
+    }
+
+	let clickablesun = document.getElementById('clickablesun')
+	let lilguy = document.getElementById('lilguy')
+	let nasasolarsystem = document.getElementById('nasasolarsystem')
+	if (currentBackground.includes('background-gif8.mp4')) {
+        // Show the clickable sun
+        clickablesun.style.display = 'block';
+		lilguy.style.display = 'none';
+		nasasolarsystem.style.display = 'none';
+	} else if (currentBackground.includes('background-gif6.mp4')) {
+        // Show the clickable alien
+        clickablesun.style.display = 'none';
+		lilguy.style.display = 'block';
+		nasasolarsystem.style.display = 'none';
+	} else if (currentBackground.includes('background-gif7.mp4')) {
+        // Show the clickable alien
+        clickablesun.style.display = 'none';
+		lilguy.style.display = 'none';
+		nasasolarsystem.style.display = 'block';
+    } else {
+        // Hide the sun on other backgrounds
+        clickablesun.style.display = 'none';
+		lilguy.style.display = 'none';
+		nasasolarsystem.style.display = 'none';
     }
 }
 

@@ -434,48 +434,9 @@ input[type="checkbox"] + label span
 	color:#8080FF;
 }
 
-/*Shooting Star Graphics*/
-span.star
-{
-	position: absolute;
-	top: 30%;
-	left: -60%;
-	width: 4px;
-	height: 4px;
-	background: #fff;
-	border-radius: 100%;
-	box-shadow: 0 0 0 4px rgba(255,255,255,0.1), 
-	0 0 0 8px rgba(255, 255, 255, 0.1);
-	animation: animate 3s linear infinite;
+audio::-webkit-media-controls-panel{
+	background-color: #8080FF;
 }
-span.star::before
-{
-	content: '';
-	position: absolute;
-	top: 50%;
-	transform: translateY(0%);
-	width: 300px;
-	height: 1px;
-	background: linear-gradient(90deg, #fff, transparent);
-}
-@keyframes animate
-{
-	0%
-	{
-		transform: rotate(0 deg) translateX(0);
-		opacity: 1;
-	}
-	100%
-	{
-		transform: rotate(315 deg) translateX(-1000px);
-		opcaity: 0;
-	}
-}
-span:nth-child(1)
-{
-	top: 10;
-	right: 80;
-	left: initial;
-	animation-delay: 0;
-	animation-duration: 1s;
+audio::-webkit-media-controls-play-button{
+	background-color: #8080FF;
 }
