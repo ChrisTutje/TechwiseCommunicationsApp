@@ -9,6 +9,7 @@ html, body
 body
 {
 	/*background-color:#15181f;*/
+	background-image: url('pixelpbg.png');
 	background-size: cover;
 	height: 100vh;
 	background-position: center;
@@ -434,9 +435,7 @@ input[type="checkbox"] + label span
 }
 
 /*Shooting Star Graphics*/
-/*issues: the stars won't animate, also, it keeps pushing over the "incoming transmission"
-text, not sure why */
-/* span
+span.star
 {
 	position: absolute;
 	top: 30%;
@@ -449,27 +448,21 @@ text, not sure why */
 	0 0 0 8px rgba(255, 255, 255, 0.1);
 	animation: animate 3s linear infinite;
 }
-
-span::before
+span.star::before
 {
 	content: '';
 	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translateY(0%);
 	width: 300px;
 	height: 1px;
 	background: linear-gradient(90deg, #fff, transparent);
 }
-
 @keyframes animate
 {
 	0%
 	{
-		transform: rotate(315 deg) translateX(0);
-		opacity: 1;
-	}
-	70%
-	{
+		transform: rotate(0 deg) translateX(0);
 		opacity: 1;
 	}
 	100%
@@ -480,31 +473,9 @@ span::before
 }
 span:nth-child(1)
 {
-	top: 0;
+	top: 10;
 	right: 80;
 	left: initial;
 	animation-delay: 0;
 	animation-duration: 1s;
 }
-span:nth-child(2)
-{
-	top: 0;
-	right: 0;
-	left: initial;
-	animation-delay: 0;
-	animation-duration: 1s;
-}span:nth-child(3)
-{
-	top: 0;
-	right: 0;
-	left: initial;
-	animation-delay: 0;
-	animation-duration: 1s;
-}span:nth-child(4)
-{
-	top: 0;
-	right: 0;
-	left: initial;
-	animation-delay: 0;
-	animation-duration: 1s;
-} */
