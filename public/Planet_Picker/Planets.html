@@ -10,7 +10,7 @@
 <body>
 <script src="https://codepen.io/shshaw/pen/QmZYMG.js"></script>
 
-<div id="app" data-current-planet="mercury">
+<div id="app" data-current-planet="earth">
 
   <nav class="planet-nav">
     <svg viewBox="0 20 400 400" xmlns="http://www.w3.org/2000/svg">
@@ -39,14 +39,17 @@
   </nav>
 
   <div class="planet" data-planet="mercury" data-active>
+
     <div class="planet-title">
       <h1>Mercury</h1>
-      <p class="planet-description">Tiny and close to the sun.</p>
+      <p class="planet-description">Tiny and close to the sun.
+        It completes three rotations about its axis for every two orbits of the Sun
+      </p>
     </div>
 
-    <div class="planet-details">
+    <div id="mercury-details" class="planet-details">
       <div class="detail" data-detail="tilt" data-postfix="°">
-        3.13
+        0
       </div>
       <div class="detail" data-detail="gravity" data-postfix="𝗑">
         0.9
@@ -64,12 +67,17 @@
   <div class="planet" data-planet="venus">
     <div class="planet-title">
       <h1>Venus</h1>
-      <p class="planet-description">A planet of razors and tennis players.</p>
+      <p class="planet-description">A planet of razors and tennis players.
+        Often referred to as Earths sister planet 
+        due to their similar size and mass. 
+        Hottest planet in our solar system with an average 
+        surface temperature of 462 °
+      </p>
     </div>
 
-    <div class="planet-details">
+    <div id="venus-details" class="planet-details">
       <div class="detail" data-detail="tilt" data-postfix="°">
-        4.13
+        177.3
       </div>
       <div class="detail" data-detail="gravity" data-postfix="𝗑">
         0.2
@@ -90,9 +98,9 @@
       <p class="planet-description">Voted best planet in the Solar System by all organisms.</p>
     </div>
 
-    <div class="planet-details">
+    <div id="earth-details" class="planet-details">
       <div class="detail" data-detail="tilt" data-postfix="°">
-        5.13
+        23.4
       </div>
       <div class="detail" data-detail="gravity" data-postfix="𝗑">
         7.3
@@ -113,9 +121,9 @@
       <p class="planet-description">Future Site of Elon Musk's AirBnB.</p>
     </div>
 
-    <div class="planet-details">
+    <div id="mars-details" class="planet-details">
       <div class="detail" data-detail="tilt" data-postfix="°">
-        6.13
+        25.2
       </div>
       <div class="detail" data-detail="gravity" data-postfix="𝗑">
         1.1
@@ -136,9 +144,9 @@
       <p class="planet-description">Twice as massive as the other planets combined.</p>
     </div>
 
-    <div class="planet-details">
+    <div id="jupiter-details" class="planet-details">
       <div class="detail" data-detail="tilt" data-postfix="°">
-        11.13
+        3.1
       </div>
       <div class="detail" data-detail="gravity" data-postfix="𝗑">
         1.8
@@ -159,9 +167,9 @@
       <p class="planet-description">This planet sponsored by Zales.</p>
     </div>
 
-    <div class="planet-details">
+    <div id="saturn-details" class="planet-details">
       <div class="detail" data-detail="tilt" data-postfix="°">
-        9.13
+        26.7
       </div>
       <div class="detail" data-detail="gravity" data-postfix="𝗑">
         7.3
@@ -182,16 +190,17 @@
       <p class="planet-description">Hey, stop laughing. It's not funny.</p>
     </div>
 
-    <div class="planet-details">
+    <div id="uranus-details" class="planet-details">
       <div class="detail" data-detail="tilt" data-postfix="°">
-        11.13
+        97.8
       </div>
       <div class="detail" data-detail="gravity" data-postfix="𝗑">
         1.8
       </div>
       <div class="detail" data-detail="hours">
         50
-      </div>    </div>
+      </div>
+    </div>
 
     <figure class="planet-figure">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1188/7_uranus.jpg" />
@@ -205,11 +214,13 @@
       <p class="planet-description">A planet for pirates; just narrowly made the cut when scientists decided nine planets was too many.</p>
     </div>
 
-    <div class="planet-details">
+    <div id="neptune-details" class="planet-details">
       <div class="detail" data-detail="tilt" data-postfix="°">
-        31.03      </div>
+        28.3
+      </div>
       <div class="detail" data-detail="gravity" data-postfix="𝗑">
-        8.9      </div>
+        8.9
+      </div>
       <div class="detail" data-detail="hours">
         10
       </div>
