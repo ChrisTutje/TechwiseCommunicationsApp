@@ -60,7 +60,8 @@ app.post('/send', async (req, res) => {
     await db.collection('UserAccounts').insertOne({ sender });
     await db.collection('Messages').insertOne({ sender, subject, body, timestamp });
 
-    res.send('Message sent successfully!');
+    //res.send('Message sent successfully!');
+    res.redirect('/');
   } catch (error) {
     console.error('Error:', error);
     res.status(500).send('Internal Server Error');
