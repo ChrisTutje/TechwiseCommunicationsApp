@@ -1,4 +1,4 @@
-//board
+//board Pizxel
 let tileSize = 32;
 let rows = 24.5;
 let columns = 45;
@@ -8,7 +8,7 @@ let boardWidth = tileSize * columns; // 32 * 16
 let boardHeight = tileSize * rows; // 32 * 16
 let context;
 
-//ship
+//ship OMAR
 let shipWidth = tileSize * 2.5;
 let shipHeight = tileSize * 1.5;
 let shipX = tileSize * columns / 2 - tileSize;
@@ -37,7 +37,7 @@ const alienImageSources = [
     "./alien-yellow.png",
     "./alien-cyan.png",
     "./alien-magenta.png",
-    // Add more image sources as needed
+    // Add more image sources as needed (maybe a boss)
 ];
 
 let alienRows = 3;
@@ -58,9 +58,7 @@ window.onload = function () {
     board.height = boardHeight;
     context = board.getContext("2d");
 
-    //draw initial ship
-    // context.fillStyle="green";
-    // context.fillRect(ship.x, ship.y, ship.width, ship.height);
+
 
     //load images
     shipImg = new Image();
