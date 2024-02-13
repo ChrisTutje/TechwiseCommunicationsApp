@@ -34,6 +34,7 @@
 
 		<link rel="shortcut icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
 		<link rel="icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
+
 	<style>
 		@media screen and (max-width: 950px) {
   		#bannerbody, #right-sidebar {   
@@ -163,7 +164,7 @@
 				</div>
 
 				<div id="compose-container">
-					<form id="compose" method="post" action="http://3.131.33.187:3000/send">
+					<form id="compose" method="post" action="/message">
 						<label for="comSender">Sender:</label>
 						<input id="comSender" type="text" name="sender" maxlength="15" autocomplete="off" placeholder="Your Name" />
 				
@@ -233,7 +234,7 @@
 				</div>
 
 				<script>
-					fetch('http://3.131.33.187:3000/messages')
+					fetch('/message')
 						.then(response => {
 							if (!response.ok) {
 								throw new Error('Network response was not ok');
