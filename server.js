@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const app = express();
 const PORT = process.env.SERVER_PORT;
+const SERVER_IP = process.env.SERVER_IP;
 
 const dbName = process.env.DATABASE_NAME;
 
@@ -91,6 +92,6 @@ app.get("/", (req, res) => {
   res.sendFile(indexPath);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(PORT, SERVER_IP, () => {
+  console.log(`Server is running on http://${SERVER_IP}:${PORT}`);
 });
