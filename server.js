@@ -92,6 +92,11 @@ app.get("/", (req, res) => {
   res.sendFile(indexPath);
 });
 
-app.listen(PORT, SERVER_IP, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on http://${SERVER_IP}:${PORT}`);
 });
+
+/*
+app.listen(PORT, 'localhost', () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+}); */
