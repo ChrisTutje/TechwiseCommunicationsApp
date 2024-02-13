@@ -433,7 +433,9 @@ input[type="checkbox"] + label span
 	cursor: pointer;
 	color:#8080FF;
 }
-
+audio{
+	position: absolute;
+}
 audio::-webkit-media-controls-panel{
 	background-color: #8080FF;
 }
