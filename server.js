@@ -1,5 +1,5 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require("body-parser");
 const path = require("path");
 require("dotenv").config();
@@ -11,7 +11,7 @@ const dbName = process.env.DATABASE_NAME;
 
 async function connectToDB() {
   //const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-  const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
+  const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
 
   // Create a MongoClient with a MongoClientOptions object to set the Stable API version
   const client = new MongoClient(uri, {
