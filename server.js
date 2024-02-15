@@ -84,13 +84,12 @@ app.post('/register', async (req, res) => {
     try {
       client = await connectToDB();
       const db = client.db(dbName);
-
-      let password;
-      password = await hashPassword(req.body.password);
-      console.log(password);
       var username = req.body.username;
       const timestamp = new Date();
 
+      const salt = await bcrypt.genSalt(10);
+      let password = await bcrypt.hash(req.body.password, salt);
+      
       await db.collection('UserAccounts').insertOne({ username, password, timestamp });
       res.redirect('/');
 
@@ -104,20 +103,6 @@ app.post('/register', async (req, res) => {
     }
   }
 );
-
-async function hashPassword(password) {
-  console.log(password);
-  bcrypt.genSalt(10)
-  .then(salt => {
-    return bcrypt.hash(password, salt);
-  }) 
-  .then(hash => {
-
-    console.log(hash);
-    return hash;
-  })
-  .catch();
-}
 
 // Serve static files
 app.use(express.static("public"));
