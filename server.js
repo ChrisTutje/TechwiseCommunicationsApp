@@ -1,32 +1,35 @@
-const { MongoClient } = require('mongodb');
-const bodyParser = require('body-parser');
-const path = require('path');
-
-const express = require('express');
+const express = require("express");
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const bodyParser = require("body-parser");
+const path = require("path");
 const bcrypt = require('bcrypt');
-
-// // Get environment variables
-const dotenv = require('dotenv')
-dotenv.config();
-
-const { URI, PORT } = process.env;
+require("dotenv").config();
 
 const app = express();
-const dbName = 'Arecibo';
+const PORT = process.env.SERVER_PORT;
+const SERVER_IP = process.env.SERVER_IP;
 
-// // Configure Header Info
-// app.use(cors);
-app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cookieParser);
-// app.use(express.json());
+const dbName = process.env.DATABASE_NAME;
 
 // // Configure database
 async function connectToDB() {
-  const client = new MongoClient(URI, { useNewUrlParser: true, useUnifiedTopology: true });
-  return client.connect();
+  //const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+  const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
+
+  // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
+  return await client.connect();
 }
 
-app.post('/send', async (req, res) => {
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post("/message", async (req, res) => {
   let client;
 
   try {
@@ -38,14 +41,36 @@ app.post('/send', async (req, res) => {
     const body = req.body.body;
     const timestamp = new Date();
 
-    //await db.collection('UserAccounts').insertOne({ sender });
-    await db.collection('Messages').insertOne({ sender, subject, body, timestamp });
+    await db
+      .collection("Messages")
+      .insertOne({ sender, subject, body, timestamp });
 
-    //res.send('Message sent successfully!');
-    res.redirect('/');
+    res.redirect("/");
   } catch (error) {
-    console.error('Error:', error);
-    res.status(500).send('Internal Server Error');
+    console.error("Error:", error);
+    res.status(500).send("Internal Server Error");
+  } finally {
+    if (client) {
+      await client.close();
+    }
+  }
+});
+
+app.get("/message", async (req, res) => {
+  let client;
+
+  try {
+    client = await connectToDB();
+    const db = client.db(dbName);
+
+    // Fetch messages from the Messages collection
+    const messages = await db.collection("Messages").find().toArray();
+
+    // Send messages as JSON response
+    res.json(messages);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   } finally {
     if (client) {
       await client.close();
@@ -95,23 +120,25 @@ async function hashPassword(password) {
 }
 
 // Serve static files
-//app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static("public"));
 
 // Disable strict MIME checking globally
 app.use((req, res, next) => {
-  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader("X-Content-Type-Options", "nosniff");
   next();
 });
 
 // Serve index.html using a relative path
-app.get('/', (req, res) => {
-  //const indexPath = path.join(__dirname, 'public/index.html');
-  const indexPath = 'public/index.html';
+app.get("/", (req, res) => {
+  const indexPath = path.join(__dirname, "index.html");
   res.sendFile(indexPath);
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://${SERVER_IP}:${PORT}`);
 });
 
+/*
+app.listen(PORT, 'localhost', () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+}); */

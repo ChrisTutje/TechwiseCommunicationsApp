@@ -76,6 +76,7 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
 }
 
 .detail {
@@ -182,7 +183,7 @@ h1, h2 {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -98px;
 }
 .planet-nav svg {
   display: block;
@@ -220,4 +221,24 @@ h1, h2 {
 }
 .planet-nav tspan {
   cursor: pointer;
+}
+/* Style for the left-side navigation bar */
+#left-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px; /* Adjust as needed */
+  background-color: #333; /* Adjust background color */
+  color: #fff;
+  padding-top: 20px;
+}
+
+/* Style for the planet title within the left-side navigation bar */
+.left-nav .planet-title {
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 }

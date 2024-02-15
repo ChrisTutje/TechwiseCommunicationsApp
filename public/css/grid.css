@@ -1,0 +1,62 @@
+/* was pl8.css */
+
+
+
+.line, .line:after, .line:before
+{
+	margin:0;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.line
+{
+	width:100%;
+	margin: 0 auto;
+}
+.line:after
+{
+	content: "";
+	display: table;
+	clear:both;
+}
+
+[class^="d-"]{
+	float:left;
+}
+[class^="d-"]:last-of-type {
+	float:right;
+}
+
+/* Main Widths */
+.d-1  { width: 100% }
+.d-2  { width: 50% }
+.d-3  { width: 33.33% }
+.d-4  { width: 25% }
+.d-5  { width: 20% }
+.d-6  { width: 16.6666666667% }
+.d-7  { width: 14.2857142857% }
+.d-8  { width: 12.5% }
+.d-9  { width: 11.1111111111% }
+.d-10 { width: 10% }
+.d-11 { width: 9.09090909091% }
+.d-12 { width: 8.33% }
+
+/* Landscape mobile & down */
+@media (max-width: 30em) {
+  .d-1,
+  .d-2,
+  .d-3,
+  .d-4,
+  .d-5,
+  .d-6,
+  .d-7,
+  .d-8,
+  .d-9,
+  .d-10,
+  .d-11,
+  .d-12 {
+    width: 100%;
+  }
+}
