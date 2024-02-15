@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../authentication-authorization-expressjs-tutorial-starterfiles"
+        }
+    ],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "TechwiseCommunicationsApp",
+        "liveServer.settings.port": 5501
+    }
+}

@@ -2,6 +2,7 @@ const express = require("express");
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require("body-parser");
 const path = require("path");
+const bcrypt = require('bcrypt');
 require("dotenv").config();
 
 const app = express();
@@ -10,6 +11,7 @@ const SERVER_IP = process.env.SERVER_IP;
 
 const dbName = process.env.DATABASE_NAME;
 
+// // Configure database
 async function connectToDB() {
   //const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
   const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
@@ -39,7 +41,6 @@ app.post("/message", async (req, res) => {
     const body = req.body.body;
     const timestamp = new Date();
 
-    await db.collection("UserAccounts").insertOne({ sender });
     await db
       .collection("Messages")
       .insertOne({ sender, subject, body, timestamp });
@@ -76,6 +77,32 @@ app.get("/message", async (req, res) => {
     }
   }
 });
+
+app.post('/register', async (req, res) => {
+    let client;
+
+    try {
+      client = await connectToDB();
+      const db = client.db(dbName);
+      var username = req.body.username;
+      const timestamp = new Date();
+
+      const salt = await bcrypt.genSalt(10);
+      let password = await bcrypt.hash(req.body.password, salt);
+      
+      await db.collection('UserAccounts').insertOne({ username, password, timestamp });
+      res.redirect('/');
+
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('Internal Server Error');
+    } finally {
+      if (client) {
+        await client.close();
+      }
+    }
+  }
+);
 
 // Serve static files
 app.use(express.static("public"));
