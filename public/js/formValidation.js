@@ -1,3 +1,12 @@
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+let value = params.error;
+console.log(value);
+if (value == 'badlogin'){
+  alert("Your username or password is incorrect.");
+}
+
 const loginForm = document.forms[0];
 const registrationForm = document.forms[1];
 const loginButton = loginForm[2];
