@@ -154,7 +154,7 @@
 				</div>
 
 				<div id="compose-container">
-					<form id="compose" method="post" action="http://3.131.33.187:3000/send">
+					<form id="compose" method="post" action="/send">
 						<label for="comSender">Sender:</label>
 						<input id="comSender" type="text" name="sender" maxlength="15" autocomplete="off" placeholder="Your Name" />
 				
@@ -222,57 +222,6 @@
 						</form>
 					</div>
 				</div>
-
-				<script>
-					fetch('http://3.131.33.187:3000/messages')
-						.then(response => {
-							if (!response.ok) {
-								throw new Error('Network response was not ok');
-							}
-							return response.json();
-						})
-						.then(messages => {
-							const inbox = document.getElementById('inbox');
-				
-							messages.forEach(message => {
-								const messageElement = document.createElement('div');
-								messageElement.classList.add('message');
-				
-								const messageContent = document.createElement('p');
-								messageContent.textContent = `${message.sender}: ${message.subject}`;
-				
-								messageContent.addEventListener('click', () => {
-									toggleMessageDetails(message);
-								});
-				
-								messageElement.appendChild(messageContent);
-								inbox.appendChild(messageElement);
-							});
-						})
-						.catch(error => {
-							console.error('Error fetching messages:', error);
-						});
-				
-					function toggleMessageDetails(message) {
-						const messageDetails = document.createElement('div');
-						messageDetails.classList.add('message-details');
-				
-						messageDetails.innerHTML = `
-							<strong>From:</strong> ${message.sender}<br>
-							<strong>Subject:</strong> ${message.subject}<br>
-							<strong>Body:</strong> ${message.body}<br>
-							<strong>Timestamp:</strong> ${new Date(message.timestamp).toLocaleString()}
-						`;
-				
-						const existingDetails = document.querySelector('.message-details');
-						if (existingDetails) {
-							existingDetails.remove();
-						} else {
-							const clickedMessage = event.target;
-							clickedMessage.parentNode.appendChild(messageDetails);
-						}
-					}
-				</script>
 
 				<div id="options-container">
 					<div id="options-view">

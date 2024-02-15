@@ -1,7 +1,7 @@
 const loginForm = document.forms[0];
 const registrationForm = document.forms[1];
 const loginButton = loginForm[2];
-const registerButton = registrationForm[4];
+const registerButton = registrationForm[5];
 
 function validateRegistration(event) {
   event.preventDefault();

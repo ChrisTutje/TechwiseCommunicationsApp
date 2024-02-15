@@ -8,6 +8,7 @@
         }
     ],
     "settings": {
-        "liveServer.settings.multiRootWorkspaceName": "TechwiseCommunicationsApp"
+        "liveServer.settings.multiRootWorkspaceName": "TechwiseCommunicationsApp",
+        "liveServer.settings.port": 5501
     }
 }
