@@ -10,7 +10,6 @@
 
 		<link rel="stylesheet" type="text/css" href="css/grid.css" />
 		<link rel="stylesheet" type="text/css" href="css/layout.css" />
-		<link rel="stylesheet" type="text/css" href="css/style1.css" />
 		<link rel="stylesheet" type="text/css" href="css/theme.css" />
 		<link href='https://fonts.googleapis.com/css?family=Anonymous+Pro|Quicksand' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
@@ -31,7 +30,7 @@
 		<div id="left-sidebar">
 			<span id="show-disclaimer">(show disclaimers)</span>
 
-			<div class="regContainer">
+			<div class="signupContainer">
 				<div class="titlebar">
 					<span id="motd">Existing travelers? Login here:</span>
 				</div>
@@ -40,10 +39,12 @@
 					<div>
 						<input id="loginUsername" type="text" name="username" autocomplete="off" placeholder="Username" />
 						<input id="loginPassword" type="password" name="password" autocomplete="off" placeholder="Password" />
+						<br>
 						<input class="btn" type="submit" name="submit" value="Login">
 					</div>
 				</form>
 
+				<br><br>
 				<div class="titlebar">
 					<span id="motd">New explorer? Register instead:</span>
 				</div>
@@ -55,6 +56,7 @@
 						<input id="regPasswordConf" type="password" name="passwordConf" autocomplete="off" placeholder="Confirm Password" />
 						<input id="disclaimerCheckbox" name="boxChecked" type="checkbox" />
 						<label for="disclaimerCheckbox">I have read and accept the <a href="#disclaimer-sidebar" onclick="showDisclaimers()">disclaimers.</a></label>
+						<br><br>
 						<input class="btn" type="submit" name="submit" value="Register">
 					</div>
 				</form>
