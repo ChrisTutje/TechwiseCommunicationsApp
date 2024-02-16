@@ -52,6 +52,33 @@ body
 	background-position:50% 85%;
 }
 
+#disclaimer-sidebar
+{
+	position: fixed;
+	left:70%;
+	right:0;
+	bottom: 0;
+	top:0;
+
+	background-color: rgb(255, 255, 255, 95%);
+
+	padding: 3em;
+	padding-top: 0;
+	color:	rgb(0 0 0);
+
+
+	-webkit-box-sizing: border-box;  /*Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;     /*Firefox, other Gecko */
+	box-sizing: border-box;          /*Opera/IE 8+ */
+
+	/* background-image:url('../img/logo_b.png'); */
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	background-position:50% 85%;
+
+	overflow: scroll
+}
+
 #logo
 {
 	display: block;
@@ -435,6 +462,24 @@ input[type="checkbox"] + label span
 	cursor: pointer;
 	color:#8080FF;
 }
+
+/* Hide/show disclaimer */
+#hide-disclaimer
+{
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	cursor: pointer;
+}
+#show-disclaimer
+{
+	position: absolute;
+	top:5px;
+	right:5px;
+	cursor: pointer;
+	color:#8080FF;
+}
+
 audio{
 	position: absolute;
 }
