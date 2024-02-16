@@ -34,7 +34,7 @@
 					<span id="motd">Existing travelers? Login here:</span>
 				</div>
 
-				<form id="loginSection" action="/login" method="post">
+				<form id="loginSection" action="/login" method="post" onsubmit="return validateLogin();">
 					<div>
 						<input id="loginUsername" type="text" name="username" autocomplete="off" placeholder="Username" />
 						<input id="loginPassword" type="password" name="password" autocomplete="off" placeholder="Password" />
@@ -46,7 +46,7 @@
 					<span id="motd">New explorer? Register instead:</span>
 				</div>
 
-				<form id="registrationSection" action="/register" method="post">
+				<form id="registrationSection" action="/register" method="post" onsubmit="return validateRegistration();">
 					<div>
 						<input id="regUsername" type="text" name="username" autocomplete="off" placeholder="Username" />
 						<input id="regPassword" type="password" name="password" autocomplete="off" placeholder="Password" />

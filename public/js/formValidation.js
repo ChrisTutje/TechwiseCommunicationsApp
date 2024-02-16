@@ -1,54 +1,47 @@
+const loginForm = document.forms[0];
+const registrationForm = document.forms[1];
+
+// Get URL query parameters to handle passed errors
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 let value = params.error;
-console.log(value);
 if (value == 'badlogin'){
   alert("Your username or password is incorrect.");
 }
 
-const loginForm = document.forms[0];
-const registrationForm = document.forms[1];
-const loginButton = loginForm[2];
-const registerButton = registrationForm[5];
-
-function validateRegistration(event) {
-  event.preventDefault();
+function validateRegistration() {
   if (registrationFormInputs.some(isEmpty)) {
     alert("You must fill in every field.");
+    return false;
   }
   else if (!isStrongPassword(passwordInput.value)) {
     alert("Your password must contain at least one of each: \
     Capital letter, lowercase letter, number, and special character.");
+    return false;
   }
   else if (passwordInput.value !== confirmPasswordInput.value) {
     alert("Your passwords must match.");
+    return false;
   }
   else if (!disclaimerCheckbox.checked){
     alert("You must read and accept the disclaimer.");
+    return false;
   }
-  else {
-    insertUser(usernameInput.value, passwordInput.value);
-  }
+  registrationForm.submit();
+  return true;
 }
 
-function validateLogin(event) {
-  event.preventDefault();
+function validateLogin() {
   if (isEmpty(usernameInputLogin) || isEmpty(passwordInputLogin)) {
     alert("You must fill in every field.");
+    return false;
   }
   else {
-    //loginUser(usernameInput.value, passwordInput.value);
+    loginForm.submit();
+    return true;
   }
 }
-
-function validateUser(event) {
-  event.preventDefault();
-  console.log("is user good?");
-}
-
-registerButton.addEventListener("click", validateRegistration);
-loginButton.addEventListener("click", validateLogin);
 
 function isEmpty(input) {
   return input.value == "";
@@ -74,7 +67,3 @@ const registrationFormInputs = [
   passwordInput,
   confirmPasswordInput,
 ];
-
-function legalCheckboxChecked() {
-  return ;
-}
