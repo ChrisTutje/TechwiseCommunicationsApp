@@ -3,12 +3,14 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require("body-parser");
 const path = require("path");
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 require("dotenv").config();
 
 const app = express();
+app.set('view engine', 'ejs');
+
 const PORT = process.env.SERVER_PORT;
 const SERVER_IP = process.env.SERVER_IP;
-
 const dbName = process.env.DATABASE_NAME;
 const saltRounds = 10;
 
@@ -30,7 +32,9 @@ async function connectToDB() {
 }
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(session({secret: `${process.env.MONGODB_URL}+${process.env.MONGODB_PASSWORD}`, // hashes the string for unique session ID, should change periodically (look up secret rotation)
+                saveUninitialized: false, // session isn't created until something is stored
+                resave: false})); // session isn't saved if no changes
 app.post("/message", async (req, res) => {
   let client;
 
@@ -96,10 +100,12 @@ app.post('/register', async (req, res) => {
       if (existingUser) { throw "duplicateUsers"}
       
       await db.collection('UserAccounts').insertOne({ username, password, timestamp });
+      req.session.userStartDate = timestamp;
+      req.session.username = username;
       res.redirect('/');
 
     } catch (err) {
-      res.redirect('/signup.html?error=' + encodeURIComponent(err));
+        res.redirect('/signup.html?error=' + encodeURIComponent(err));
     } finally {
       if (client) {
         await client.close();
@@ -121,6 +127,8 @@ app.post('/login', async (req, res) => {
     let match = await bcrypt.compare(req.body.password, user.password);
     if (!match) {throw "badlogin"; }
     
+    req.session.userStartDate = user.timestamp;
+    req.session.username = user.username;
     res.redirect("/");
 
   } catch (err) {
@@ -144,8 +152,8 @@ app.use((req, res, next) => {
 
 // Serve index.html using a relative path
 app.get("/", (req, res) => {
-  const indexPath = path.join(__dirname, "index.html");
-  res.sendFile(indexPath);
+  //const indexPath = path.join(__dirname, "index.ejs");
+  res.render('templateIndex', {username: req.session.username, timestamp: req.session.timestamp});
 });
 
 app.listen(PORT, () => {
