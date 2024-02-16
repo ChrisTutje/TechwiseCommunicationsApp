@@ -15,8 +15,8 @@ const saltRounds = 10;
 // // Configure database
 async function connectToDB() {
   //const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-  //const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
-  const uri = 'mongodb://localhost:27017';
+  const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
+  //const uri = 'mongodb://localhost:27017';
 
   // Create a MongoClient with a MongoClientOptions object to set the Stable API version
   const client = new MongoClient(uri, {
@@ -92,12 +92,14 @@ app.post('/register', async (req, res) => {
       const salt = await bcrypt.genSalt(saltRounds);
       let password = await bcrypt.hash(req.body.password, salt);
       
+      let existingUser = await db.collection("UserAccounts").findOne({username: req.body.username});
+      if (existingUser) { throw "duplicateUsers"}
+      
       await db.collection('UserAccounts').insertOne({ username, password, timestamp });
       res.redirect('/');
 
     } catch (err) {
-      console.error('Error:', err);
-      res.status(500).send('Internal Server Error');
+      res.redirect('/signup.html?error=' + encodeURIComponent(err));
     } finally {
       if (client) {
         await client.close();
@@ -114,16 +116,15 @@ app.post('/login', async (req, res) => {
     const db = client.db(dbName);
 
     let user = await db.collection("UserAccounts").findOne({username: req.body.username});
-    if (!user) { throw "A user with that username doesn't exist."; }
+    if (!user) { throw "badlogin" }
 
     let match = await bcrypt.compare(req.body.password, user.password);
-    if (!match) {throw "Incorrect password"; }
+    if (!match) {throw "badlogin"; }
     
     res.redirect("/");
 
   } catch (err) {
-      console.error('Error:', err);
-      res.redirect('/signup.html?error=' + encodeURIComponent('badlogin'));
+      res.redirect('/signup.html?error=' + encodeURIComponent(err));
   } finally {
     if (client) {
       await client.close();

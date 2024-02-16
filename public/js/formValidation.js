@@ -5,9 +5,17 @@ const registrationForm = document.forms[1];
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
-let value = params.error;
-if (value == 'badlogin'){
-  alert("Your username or password is incorrect.");
+if (params.error) {
+  alert(getErrorMsg(params.error));
+}
+
+function getErrorMsg(errCode) {
+  if (errCode == 'duplicateUsers'){
+    return "That username is already taken.";
+  }
+  else if (errCode == 'badlogin'){
+    return "Your username or password is incorrect.";
+  }
 }
 
 function validateRegistration() {
