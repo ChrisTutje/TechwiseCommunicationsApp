@@ -3,13 +3,16 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require("body-parser");
 const path = require("path");
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 require("dotenv").config();
 
 const app = express();
+app.set('view engine', 'ejs');
+
 const PORT = process.env.SERVER_PORT;
 const SERVER_IP = process.env.SERVER_IP;
-
 const dbName = process.env.DATABASE_NAME;
+const saltRounds = 10;
 
 // // Configure database
 async function connectToDB() {
@@ -28,7 +31,9 @@ async function connectToDB() {
 }
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(session({secret: `${process.env.MONGODB_URL}+${process.env.MONGODB_PASSWORD}`, // hashes the string for unique session ID, should change periodically (look up secret rotation)
+                saveUninitialized: false, // session isn't created until something is stored
+                resave: false})); // session isn't saved if no changes
 app.post("/message", async (req, res) => {
   let client;
 
@@ -87,21 +92,52 @@ app.post('/register', async (req, res) => {
       var username = req.body.username;
       const timestamp = new Date();
 
-      const salt = await bcrypt.genSalt(10);
+      const salt = await bcrypt.genSalt(saltRounds);
       let password = await bcrypt.hash(req.body.password, salt);
       
+      let existingUser = await db.collection("UserAccounts").findOne({username: req.body.username});
+      if (existingUser) { throw "duplicateUsers"}
+      
       await db.collection('UserAccounts').insertOne({ username, password, timestamp });
+      req.session.userStartDate = timestamp;
+      req.session.username = username;
       res.redirect('/');
 
     } catch (err) {
-      console.error('Error:', err);
-      res.status(500).send('Internal Server Error');
+        res.redirect('/signup.html?error=' + encodeURIComponent(err));
     } finally {
       if (client) {
         await client.close();
       }
     }
   }
+);
+
+app.post('/login', async (req, res) => {
+  let client;
+
+  try {
+    client = await connectToDB();
+    const db = client.db(dbName);
+
+    let user = await db.collection("UserAccounts").findOne({username: req.body.username});
+    if (!user) { throw "badlogin" }
+
+    let match = await bcrypt.compare(req.body.password, user.password);
+    if (!match) {throw "badlogin"; }
+    
+    req.session.userStartDate = user.timestamp;
+    req.session.username = user.username;
+    res.redirect("/");
+
+  } catch (err) {
+      res.redirect('/signup.html?error=' + encodeURIComponent(err));
+  } finally {
+    if (client) {
+      await client.close();
+    }
+  }
+}
 );
 
 // Serve static files
@@ -115,8 +151,7 @@ app.use((req, res, next) => {
 
 // Serve index.html using a relative path
 app.get("/", (req, res) => {
-  const indexPath = path.join(__dirname, "index.html");
-  res.sendFile(indexPath);
+  res.render('index', {username: req.session.username, userStartDate: req.session.userStartDate});
 });
 
 app.listen(PORT, () => {

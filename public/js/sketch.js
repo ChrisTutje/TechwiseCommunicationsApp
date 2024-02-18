@@ -45,4 +45,14 @@ $(function() {
         $('#right-sidebar').show();
         $('#show-sidebar').hide();
     });
+
+    $('#disclaimer-sidebar').hide();
+    $('#hide-disclaimer').click(function() {
+        $('#disclaimer-sidebar').hide();
+        $('#show-disclaimer').show();
+    });
+    $('#show-disclaimer').click(function() {
+        $('#disclaimer-sidebar').show();
+        $('#show-disclaimer').hide();
+    });
 });

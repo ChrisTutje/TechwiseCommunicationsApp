@@ -8,9 +8,9 @@
 		<meta name="description" content="Send messages into the void!">
 		<title>Sign Into Project Arecibo</title>
 
-		<link rel="stylesheet" type="text/css" href="css/pl8.css" />
-		<link rel="stylesheet" type="text/css" href="css/styles-revised.css" />
-		<link rel="stylesheet" type="text/css" href="css/client-styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="css/theme.css" />
 		<link href='https://fonts.googleapis.com/css?family=Anonymous+Pro|Quicksand' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
 		<link rel="icon" href="images/Kawaii UFO Sprite/Kawaii UFO Sprite - Blank.png" type="image/x-icon">
@@ -22,49 +22,87 @@
 
 	<body>
 		<video id="video-background" autoplay muted loop>
-			<source src="css/background-video.mp4" type="video/mp4">
+			<source src="assets/background-video.mp4" type="video/mp4">
+			<source src="assets/sun.png">
 			Your browser does not support the video tag.
 		</video>
 
 		<div id="left-sidebar">
-			<div class="regContainer">
+			<span id="show-disclaimer">(show disclaimers)</span>
+
+			<div class="signupContainer">
 				<div class="titlebar">
 					<span id="motd">Existing travelers? Login here:</span>
 				</div>
 
-				<form id="loginSection">
+				<form id="loginSection" action="/login" method="post" onsubmit="return validateLogin();">
 					<div>
-						<input id="loginUsername" type="text" name="sender" autocomplete="off" placeholder="Username" />
-						<input id="loginPassword" type="password" name="sender" autocomplete="off" placeholder="Password" />
-					</div>
-
-					<div class="button-container">
-						<button id="b-login" class="btn" type="button">Login</button>
+						<input id="loginUsername" type="text" name="username" autocomplete="off" placeholder="Username" />
+						<input id="loginPassword" type="password" name="password" autocomplete="off" placeholder="Password" />
+						<br>
+						<input class="btn" type="submit" name="submit" value="Login">
 					</div>
 				</form>
 
+				<br><br>
 				<div class="titlebar">
 					<span id="motd">New explorer? Register instead:</span>
 				</div>
 
-				<form action="/register" method="post">
+				<form id="registrationSection" action="/register" method="post" onsubmit="return validateRegistration();">
 					<div>
 						<input id="regUsername" type="text" name="username" autocomplete="off" placeholder="Username" />
 						<input id="regPassword" type="password" name="password" autocomplete="off" placeholder="Password" />
 						<input id="regPasswordConf" type="password" name="passwordConf" autocomplete="off" placeholder="Confirm Password" />
-                        <input id="disclaimerCheckbox" name="boxChecked" type="checkbox" />
-                        <label for="disclaimerCheckbox">I have read and accept the <a href="disclaimer.html" target="_blank">disclaimers</a>.</label>
-						<input type="submit" name="submit" value="Submit">
-					</div>
-
-					<div class="button-container">
-						<button id="b-register" class="btn" type="button">Register</button>
+						<input id="disclaimerCheckbox" name="boxChecked" type="checkbox" />
+						<label for="disclaimerCheckbox">I have read and accept the <a href="#disclaimer-sidebar" onclick="showDisclaimers()">disclaimers.</a></label>
+						<br><br>
+						<input class="btn" type="submit" name="submit" value="Register">
 					</div>
 				</form>
 			</div>
 
 			<p id="footer">Pixel Plunderers &copy;2024</p>
 		</div>
+
+		<div id="disclaimer-sidebar">
+			<span id="hide-disclaimer">(hide)</span>
+			<br>
+			<h1>DISCLAIMER</h1>
+			<h3>Last Updated: February 15, 2024</h3>
+			<h2>WEBSITE DISCLAIMER</h2>
+			
+			<section>
+				<p>
+					The information provided by Project Arecibo ("we," "us," or "our") on the "Site" is for general informational purposes only.
+					All information on the Site is provided in good faith, however we make no representation or warranty of any kind,
+					express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.
+					UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE SITE
+					OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE. YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY
+					AT YOUR OWN RISK.
+				</p>
+			</section>
+
+			<h2>EXTERNAL LINKS DISCLAIMER</h2>
+			<section>
+				<p>
+					The Site may contain (or you may be sent through the Site) links to other websites or content belonging to or originating
+					from third parties or links to websites and features in banners or other advertising. Such external links are not
+					investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability, or completeness by us.
+					WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR THE ACCURACY OR RELIABILITY OF ANY INFORMATION
+					OFFERED BY THIRD-PARTY WEBSITES LINKED THROUGH THE SITE OR ANY WEBSITE OR FEATURE LINKED IN ANY BANNER OR OTHER ADVERTISING.
+					WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND THIRD-PARTY PROVIDERS
+					OF PRODUCTS OR SERVICES.
+				</p>
+			</section>
+		</div>
+
 		<script src="js/formValidation.js" type="text/javascript"></script>
+		<script>
+			function showDisclaimers() {
+				$('#disclaimer-sidebar').show();
+        		$('#show-disclaimer').hide();
+			}
+		</script>
 	</body>
 </html>
