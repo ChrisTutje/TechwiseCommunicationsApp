@@ -17,8 +17,7 @@ const saltRounds = 10;
 // // Configure database
 async function connectToDB() {
   //const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-  //const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
-  const uri = 'mongodb://localhost:27017';
+  const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
 
   // Create a MongoClient with a MongoClientOptions object to set the Stable API version
   const client = new MongoClient(uri, {
