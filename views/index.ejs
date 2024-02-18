@@ -125,8 +125,19 @@
 						<div class="r1"></div><div class="r2"></div><div class="r3"></div>
 					</span>
 					<span id="notif"></span>
-					<span id="motd">Incoming Transmission</span>
-					<h1><%= username %></h1>
+					<script>
+						if (locals.userStartDate){
+							console.log(locals.userStartDate);
+							console.log(Date(locals.userStartDate));
+						}
+					</script>
+
+					<% if (locals.username) { %>
+						<span id="motd">Welcome back, <%= username %>. You've been aboard for <%= Math.trunc(((new Date()) - (new Date(userStartDate)))/86400000) %> days.</span>
+					  <% } else { %>  
+						<span id="motd">Incoming Transmission</span>
+					 <% } %>
+
 					<!-- Perhaps replace message of the day with the button for finding stats -->
 				</div>
 
