@@ -9,7 +9,7 @@ html, body
 body
 {
 	/*background-color:#15181f;*/
-	background-image: url('pixelpbg.png');
+	background-image: url('public/assets/arecibo.png');
 	background-size: cover;
 	height: 100vh;
 	background-position: center;
@@ -481,11 +481,14 @@ input[type="checkbox"] + label span
 }
 
 audio{
+	width: 30%;
 	position: absolute;
+	bottom: 0px;
+	right: 500px;
 }
 audio::-webkit-media-controls-panel{
 	background-color: #8080FF;
 }
 audio::-webkit-media-controls-play-button{
-	background-color: #8080FF;
+	background-color: white;
 }
