@@ -56,13 +56,19 @@
 						<input id="regPasswordConf" type="password" name="passwordConf" autocomplete="off" placeholder="Confirm Password" />
 						<input id="disclaimerCheckbox" name="boxChecked" type="checkbox" />
 						<label for="disclaimerCheckbox">I have read and accept the <a href="#disclaimer-sidebar" onclick="showDisclaimers()">disclaimers.</a></label>
-						<br><br>
-						<input class="btn" type="submit" name="submit" value="Register">
+						<br>
+						<input type="checkbox" onclick="togglePasswordVisibility()">
+						<span id="motd">Show Password</span>
+						<br><br><br>
+						<input id="regSubmit" class="btn" type="submit" name="submit" value="Register">
 					</div>
 				</form>
-			</div>
+				<a href="#" onclick="javascript:window.history.back(-1);return false;">
+					<input id="regBack" class="btn" type="submit" name="Back" value="Back">
+				</a>
 
-			<p id="footer">Pixel Plunderers &copy;2024</p>
+				<p id="footer">Pixel Plunderers &copy;2024</p>
+			</div>
 		</div>
 
 		<div id="disclaimer-sidebar">

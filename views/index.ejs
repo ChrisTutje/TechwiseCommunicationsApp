@@ -114,38 +114,35 @@
 
 			<div id="container" class="draggable-container">
 				<div class="titlebar">
-					<span id="drag-handle" class="drag-handle">
-						Click to drag
-						
-					</span>
-					<span>
-					 <button id="return-button" class="btn" type="button">Return</button> 
-					
-					<span id="notif-spin" class="invis">
-						<div class="r1"></div><div class="r2"></div><div class="r3"></div>
-					</span>
-					<span id="notif"></span>
-					<script>
-						if (locals.userStartDate){
-							console.log(locals.userStartDate);
-							console.log(Date(locals.userStartDate));
-						}
-					</script>
-
 					<% if (locals.username) { %>
-						<span id="motd">Welcome back, <%= username %>. You've been aboard for <%= Math.trunc(((new Date()) - (new Date(userStartDate)))/86400000) %> days.</span>
+						<span id="motd">Welcome back, <%= username %>. You've been aboard for <%= Math.trunc(((new Date()) - (new Date(userStartDate)))/86400000) + 1 %> days.</span>
 					  <% } else { %>  
 						<span id="motd">Incoming Transmission</span>
 					 <% } %>
 
-					<!-- Perhaps replace message of the day with the button for finding stats -->
+					<span id="notif"></span>
+				
+					<span id="notif-spin" class="invis">
+						<div class="r1"></div><div class="r2"></div><div class="r3"></div>
+					</span>
+				</div>
+				<div class="titlebar">
+					<span id="drag-handle" class="drag-handle">
+						Click to drag
+					</span>
+					<span>
+					 <button id="return-button" class="btn" type="button">Return</button> 
+					</span>
 				</div>
 
 				<div id="compose-container">
 					<form id="compose" method="post" action="/message">
 						<label for="comSender">Sender:</label>
-						<input id="comSender" type="text" name="sender" maxlength="15" autocomplete="off" placeholder="Your Name" />
-				
+						<% if (locals.username) { %>
+							<input id="comSender" type="text" name="sender" maxlength="15" autocomplete="off" placeholder="Your Name" value=<%= username%>>
+						  <% } else { %>  
+							<input id="comSender" type="text" name="sender" maxlength="15" autocomplete="off" placeholder="Your Name" />
+						 <% } %>				
 						<label for="comSubject">Subject:</label>
 						<input id="comSubject" type="text" name="subject" maxlength="15" autocomplete="off" placeholder="Subject" />
 				

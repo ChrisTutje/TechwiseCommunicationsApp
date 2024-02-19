@@ -75,3 +75,8 @@ const registrationFormInputs = [
   passwordInput,
   confirmPasswordInput,
 ];
+
+function togglePasswordVisibility() {
+  passwordInput.type = (passwordInput.type == "password") ? "text" : "password";
+  passwordInputLogin.type = (passwordInputLogin.type == "password") ? "text" : "password";
+}
