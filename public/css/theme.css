@@ -484,11 +484,11 @@ audio{
 	width: 30%;
 	position: absolute;
 	bottom: 0px;
-	right: 500px;
+	right: 650px;
 }
 audio::-webkit-media-controls-panel{
 	background-color: #8080FF;
 }
 audio::-webkit-media-controls-play-button{
-	background-color: white;
+	background-color: #8080FF;
 }
