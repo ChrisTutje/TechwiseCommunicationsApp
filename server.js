@@ -83,6 +83,20 @@ app.get("/message", async (req, res) => {
   }
 });
 
+app.get('/logout', async (req, res) => {
+  if (req.session) {
+    req.session.destroy(err => {
+      if (err) {
+        res.status(400).send('Unable to log out');
+      } else {
+        res.redirect('/');
+      }
+    });  
+  } else {
+    res.end();
+  }
+});
+
 app.post('/register', async (req, res) => {
     let client;
 

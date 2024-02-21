@@ -141,14 +141,12 @@
 						<input id="comSubject" type="text" name="subject" maxlength="15" autocomplete="off" placeholder="Subject" />
 				
 						<label for="comBody">Message:</label>
-						<textarea id="comBody" name="body" maxlength="1000" placeholder="Write your message here"></textarea>
+						<textarea id="comBody" name="body" maxlength="1000" style="resize: none" placeholder="Write your message here"></textarea>
 				
 						<div class="button-container">
-							<button id="b-preview" class="btn" type="button">Preview</button>
-							<button id="b-send" class="btn" type="submit" onclick="validateWords(event);">Send</button>
-							<button id="b-opt" class="btn" type="button">Options</button>
-
 							<button class="b-back btn" type="button">Back</button>
+							<button id="b-preview" class="btn" type="button">Preview</button>
+							<button id="b-send" class="btn" type="submit" onclick="validateWords(event);">Broadcast!</button>
 						</div>
 					</form>
 					<div id="preview-container">
@@ -190,11 +188,16 @@
 					</div>
 					
 					<div id="b-container">
-						<p id="naughty" style="display: none;"></p>
 						<form method="link" action="signup.html" target="_blank">
 							<button id="b-com" class="btn" type="button">Compose</button>
 							<button id="b-options" class="btn" type="button">Options</button>
-							<a href='signup.html'><button id="b-register" class="btn" type="button">Register</button></a>
+
+							<% if (locals.username) { %>
+								<a href='/logout'><button id="b-register" class="btn" type="button">Logout</button></a>
+							<% } else { %>  
+								<a href='signup.html'><button id="b-register" class="btn" type="button">Register/Login</button></a>
+							 <% } %>
+							
 
 							<span class="clear"></span>
 						</form>
@@ -234,12 +237,13 @@
 					function toggleMessageDetails(message) {
 						const messageDetails = document.createElement('div');
 						messageDetails.classList.add('message-details');
+						messageDetails.addEventListener('click', () => {
+									toggleMessageDetails(message);
+								});
 				
 						messageDetails.innerHTML = `
-							<strong>From:</strong> ${message.sender}<br>
-							<strong>Subject:</strong> ${message.subject}<br>
-							<strong>Body:</strong> ${message.body}<br>
-							<strong>Timestamp:</strong> ${new Date(message.timestamp).toLocaleString()}
+							"${message.body}"<br><br>
+							(Sent ${new Date(message.timestamp).toLocaleString()})
 						`;
 				
 						const existingDetails = document.querySelector('.message-details');
