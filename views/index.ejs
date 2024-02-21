@@ -59,15 +59,9 @@
 			Your browser does not support audio.
 		</audio>
 		
-		<a href="https://eyes.nasa.gov/apps/exo/#/">
-			<img id="clickablesun" src="assets/sun.png" height ="200px" width="200px"></img>
-		</a>
-		<a href="https://www.youtube.com/watch?v=OVe72eMY_pk">
-			<img id="lilguy" src="assets/pixelalien.png" height ="200px" width="200px"></img>
-		</a>
-		<a href="https://eyes.nasa.gov/apps/solar-system/#/home">
-			<button id="nasasolarsystem">Our Home, the Milky Way...</button>
-		</a>
+		<a href="https://eyes.nasa.gov/apps/exo/#/"> <img class="img-sun" id="clickablesun" src="assets/sun.png"></img></a>
+		<a href="https://www.youtube.com/watch?v=OVe72eMY_pk"> <img class="img-alien" id="lilguy" src="assets/pixelalien.png" height ="200px" width="200px"></img></a>
+		<a href="https://eyes.nasa.gov/apps/solar-system/#/home"><img class="img-space" id="spaceship" src="assets/spaceship.webp"></img></a>
 		
 		<video id="video-background" autoplay muted loop>
 			<source src="assets/background-video.mp4" type="video/mp4">
@@ -339,27 +333,27 @@
 
 	let clickablesun = document.getElementById('clickablesun')
 	let lilguy = document.getElementById('lilguy')
-	let nasasolarsystem = document.getElementById('nasasolarsystem')
+	let spaceship = document.getElementById('spaceship')
 	if (currentBackground.includes('background-gif8.mp4')) {
         // Show the clickable sun
         clickablesun.style.display = 'block';
 		lilguy.style.display = 'none';
-		nasasolarsystem.style.display = 'none';
+		spaceship.style.display = 'none';
 	} else if (currentBackground.includes('background-gif6.mp4')) {
         // Show the clickable alien
         clickablesun.style.display = 'none';
 		lilguy.style.display = 'block';
-		nasasolarsystem.style.display = 'none';
+		spaceship.style.display = 'none';
 	} else if (currentBackground.includes('background-gif7.mp4')) {
         // Show the clickable alien
         clickablesun.style.display = 'none';
 		lilguy.style.display = 'none';
-		nasasolarsystem.style.display = 'block';
+		spaceship.style.display = 'block';
     } else {
         // Hide the sun on other backgrounds
         clickablesun.style.display = 'none';
 		lilguy.style.display = 'none';
-		nasasolarsystem.style.display = 'none';
+		spaceship.style.display = 'none';
     }
 }
 
@@ -512,8 +506,8 @@ document.getElementById('video-background').addEventListener('canplay', checkBac
 				});
 
 				tour.addStep({
-					title: 'Creating a message',
-					text: 'Here is where you can write your message ',
+					title: 'Login for more fun',
+					text: 'Having fun? Make sure to create an account in the upper left.',
 					attachTo: {
 						element: '.omar',
 						on: 'bottom'
@@ -537,8 +531,8 @@ document.getElementById('video-background').addEventListener('canplay', checkBac
 				});
 
 				tour.addStep({
-					title: 'Welcome to Arecibo!',
-					text: 'Hello! My name is O.M.A.R. your Orbital Message Assistance Robot. I will guide you on our adventure through space!',
+					title: 'Exploration is key...',
+					text: 'Make sure to look around and try all our features! If you see a distress call, make sure to answer by clicking on it!',
 					attachTo: {
 						element: '.omar',
 						on: 'bottom'
@@ -562,8 +556,8 @@ document.getElementById('video-background').addEventListener('canplay', checkBac
 				});
 
 				tour.addStep({
-					title: 'Welcome to Arecibo!',
-					text: 'Hello! My name is O.M.A.R. your Orbital Message Assistance Robot. I will guide you on our adventure through space!',
+					title: 'You are all set!',
+					text: 'This is everything I can teach you for now. Happy exploring, space cadets!',
 					attachTo: {
 						element: '.omar',
 						on: 'bottom'
