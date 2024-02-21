@@ -1,0 +1,82 @@
+/* author: Tom Miller
+https://codepen.io/creativeocean/pen/poGWNNa */
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+html, body {
+  margin:0;
+  padding:0;
+  width:100;
+  height:100%;
+}
+
+body {
+  overflow:hidden;
+  background:url(https://images.unsplash.com/photo-1628006203055-b4aa5f6300f3?q=60&w=2000);
+  background-size:cover;
+  background-position:center;
+}
+
+div {
+  position:absolute;
+  left:0;
+  top:0;
+  user-select:none;
+}
+
+.stage-bg {
+  background:linear-gradient(rgba(0,0,0,0) 77%,rgba(0,0,0,0.5));
+}
+
+.follower {
+  font-size:150px;
+  pointer-events:none;
+}
+
+.stage {
+  width:100%;
+  height:100%;
+}
+
+.score {
+  font-size:40px;
+  left:20px;
+  top:10px;
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  color:#fff;
+}
+
+.score .num {
+  font-size:0.65em;
+  color:#ccc;
+}
+
+.timer {
+  font-size:85px;
+  top:unset;
+  bottom:115px;
+  left:15px;
+  display:flex;
+}
+
+.timer .face {
+  overflow:hidden;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  left:10px;
+  top:22px;
+}
+
+.timer .face .inner {
+  left:-10px;
+  top:-22px;
+}
+
+.replay {
+  font-size:25px;
+  width:200px;
+  left:105px;
+  top:35px;
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  color:#fff;
+}

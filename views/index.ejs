@@ -265,8 +265,15 @@
 			<div>
 				<a href='Space_shooter/Space-shooter.html'><button id="specialButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
 				<a href='Planet_Picker/Planets.html'><button id="educationButton" class="educationalButton Planets" role="button" onclick="redirectToSpaceShooter()">PLANETS</button></a>
+                <a href='Space_Slicer/Space_slicer.html'><button id="spaceSlicerButton" class="space-slicer" role="button" onclick="redirectToSpaceSlicer()">Space Slicer</button></a>
 
 
+
+				<script>
+                    function redirectToSpaceSlicer() {
+            window.location.href = 'Space_slicer/Space_slicer.html';
+                    }
+					</script>
 				<script>
 				function redirectToSpaceShooter() {
 					
@@ -330,6 +337,14 @@
         specialButton.style.display = 'none';
         educationButton.style.display = 'none';
     }
+	if (currentBackground.includes('background-gif3.mp4')) {
+        // Show the button on background number 3
+        spaceSlicerButton.style.display = 'block';
+    } else {
+        // Hide the button on other backgrounds
+        spaceSlicerButton.style.display = 'none';
+    }
+
 
 	let clickablesun = document.getElementById('clickablesun')
 	let lilguy = document.getElementById('lilguy')
