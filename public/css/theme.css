@@ -492,3 +492,27 @@ audio::-webkit-media-controls-panel{
 audio::-webkit-media-controls-play-button{
 	background-color: #8080FF;
 }
+
+.img-sun{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	bottom: 400px;
+	left: 200px;
+}
+
+.img-alien{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	bottom: 10px;
+	left: 100px;
+}
+
+.img-space{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	bottom: 250px;
+	left: 250px;
+}
