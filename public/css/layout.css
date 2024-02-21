@@ -82,6 +82,8 @@
     margin: 0;
     overflow: hidden;
     color: #ecf0f1;
+    background-color: #34495e;
+    border-radius: 5px;
 }
 
 .left {
@@ -695,12 +697,6 @@ body {
         inset 0 0 .5em .25em var(--glow-color);
 }
 
-  
-.message {
-  background-color: #0f192171;
-  border-radius: 5px;
-  margin: 1px;
-}
 
 
 
