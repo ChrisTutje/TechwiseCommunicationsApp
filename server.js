@@ -154,11 +154,25 @@ app.get("/", (req, res) => {
   res.render('index', {username: req.session.username, userStartDate: req.session.userStartDate});
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://${SERVER_IP}:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running on http://${SERVER_IP}:${PORT}`);
+// });
+
+
+app.listen(3000, 'localhost', () => {
+  console.log(`Server is running on http://localhost:${3000}`);
+}); 
 
 /*
-app.listen(PORT, 'localhost', () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-}); */
+SERVER_IP=35.208.144.54
+
+SERVER_PORT=3000
+
+MONGODB_URL=arecibo.gibqqe2.mongodb.net
+
+DATABASE_NAME=Arecibo
+
+MONGODB_USER=christutje
+
+MONGODB_PASSWORD=9CCSAhw3IBGShodf
+*/
