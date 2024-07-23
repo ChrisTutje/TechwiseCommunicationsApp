@@ -168,11 +168,11 @@ app.get("/", (req, res) => {
   res.render('index', {username: req.session.username, userStartDate: req.session.userStartDate});
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://${SERVER_IP}:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running on http://${SERVER_IP}:${PORT}`);
+// });
 
  
-// app.listen(PORT, 'localhost', () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);
-// });
+app.listen(PORT, 'localhost', () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
