@@ -1,0 +1,99 @@
+<video id="video-background" autoplay muted loop>
+  <source src="assets/background-video.mp4" type="video/mp4" />
+  <source src="assets/background-gif8.mp4" type="video/mp4" />
+  <source src="assets/Background-gif1.mp4" type="video/mp4" />
+  <source src="assets/background-gif2.mp4" type="video/mp4" />
+  <source src="assets/background-gif3.mp4" type="video/mp4" />
+  <source src="assets/background-gif4.mp4" type="video/mp4" />
+  <source src="assets/background-gif5.mp4" type="video/mp4" />
+  <source src="assets/background-gif6.mp4" type="video/mp4" />
+  <source src="assets/background-gif7.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<script>
+  function redirectToSpaceSlicer() {
+    window.location.href = "Space_slicer/Space_slicer.html";
+  }
+  function redirectToSpaceShooter() {
+    window.location.href = "Space-shooter.html";
+  }
+</script>
+<script>
+  $(document).ready(function () {
+    const videoBackground = document.getElementById("video-background");
+    const videoSources = [
+      "assets/background-video.mp4",
+      "assets/Background-gif1.mp4",
+      "assets/background-gif8.mp4",
+      "assets/background-gif3.mp4",
+      "assets/background-gif5.mp4",
+      "assets/background-gif6.mp4",
+      "assets/background-gif7.mp4",
+    ];
+    let currentVideoIndex = 0;
+
+    $("#change-background-button").click(function () {
+      currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+      videoBackground.src = videoSources[currentVideoIndex];
+      videoBackground.addEventListener(
+        "canplay",
+        function () {
+          videoBackground.play();
+        },
+        { once: true }
+      );
+    });
+  });
+</script>
+<script>
+  function checkBackground() {
+    let currentBackground = document.getElementById("video-background").src;
+    let specialButton = document.getElementById("specialButton");
+    let educationButton = document.getElementById("educationButton");
+    let spaceSlicerButton = document.getElementById("spaceSlicerButton");
+    let clickablesun = document.getElementById("clickablesun");
+    let lilguy = document.getElementById("lilguy");
+    let spaceship = document.getElementById("spaceship");
+
+    if (currentBackground.includes("background-gif7.mp4")) {
+      specialButton.style.display = "block";
+      educationButton.style.display = "none";
+      spaceSlicerButton.style.display = "none";
+    } else if (currentBackground.includes("background-gif5.mp4")) {
+      educationButton.style.display = "block";
+      specialButton.style.display = "none";
+      spaceSlicerButton.style.display = "none";
+    } else if (currentBackground.includes("background-gif3.mp4")) {
+      spaceSlicerButton.style.display = "block";
+      specialButton.style.display = "none";
+      educationButton.style.display = "none";
+    } else {
+      specialButton.style.display = "none";
+      educationButton.style.display = "none";
+      spaceSlicerButton.style.display = "none";
+    }
+
+    if (currentBackground.includes("background-gif8.mp4")) {
+      clickablesun.style.display = "block";
+      lilguy.style.display = "none";
+      spaceship.style.display = "none";
+    } else if (currentBackground.includes("background-gif6.mp4")) {
+      clickablesun.style.display = "none";
+      lilguy.style.display = "block";
+      spaceship.style.display = "none";
+    } else if (currentBackground.includes("background-gif7.mp4")) {
+      clickablesun.style.display = "none";
+      lilguy.style.display = "none";
+      spaceship.style.display = "block";
+    } else {
+      clickablesun.style.display = "none";
+      lilguy.style.display = "none";
+      spaceship.style.display = "none";
+    }
+  }
+  window.onload = checkBackground;
+  document
+    .getElementById("video-background")
+    .addEventListener("canplay", checkBackground);
+</script>

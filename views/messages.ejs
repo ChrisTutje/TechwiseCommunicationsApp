@@ -1,0 +1,42 @@
+<script>
+  $(document).ready(function () {
+    const container = $(".draggable-container");
+    const originalPosition = { top: 144, left: 516 }; // Store the original position
+
+    container.draggable({
+      handle: "#drag-handle",
+    });
+
+    // Add a click event for the "Return" button
+    $("#return-button").click(function () {
+      container.animate(originalPosition, "fast"); // Animate to the original position
+    });
+
+    // Add a click event for the "Toggle Container" button
+    $("#toggle-container").click(function () {
+      container.toggleClass("minimized"); // Add or remove 'minimized' class
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("compose");
+    const banner = document.getElementById("banner");
+    const bannerInfo = document.getElementById("banner-info");
+
+    form.addEventListener("submit", function (event) {
+      const senderInput = document.getElementById("comSender");
+      const subjectInput = document.getElementById("comSubject");
+      const bodyInput = document.getElementById("comBody");
+
+      if (!subjectInput.value || !bodyInput.value) {
+        alert("Subject and Body are required.");
+        event.preventDefault();
+        return;
+      }
+
+      if (!senderInput.value) {
+        senderInput.value = "Unknown Creature";
+      }
+    });
+  });
+</script>

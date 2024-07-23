@@ -1,0 +1,140 @@
+<script>
+  function OmarTime() {
+    console.log("hi omar");
+    const tour = new Shepherd.Tour({
+      useModalOverlay: true,
+      defaultStepOptions: {
+        classes: "shadow-md bg-purple-dark",
+        scrollTo: true,
+      },
+    });
+
+    tour.addStep({
+      title: "Welcome to Arecibo!",
+      text: "Hello! My name is O.M.A.R. your Orbital Message Assistance Robot. I will guide you on our adventure through space!",
+      attachTo: {
+        element: ".omar",
+        on: "bottom",
+      },
+      buttons: [
+        {
+          action() {
+            return this.cancel();
+          },
+          classes: "shepherd-button-secondary",
+          text: "Exit",
+        },
+        {
+          action() {
+            return this.next();
+          },
+          text: "Next",
+        },
+      ],
+      id: "creating",
+    });
+
+    tour.addStep({
+      title: "3...2...1...Chat!",
+      text: "Let us get started! Here is where you will be sending messages into fellow astronauts...and maybe a few aliens. Click compose to start your message",
+      advanceOn: { selector: ".b-com", event: "onclick" },
+      attachTo: {
+        element: ".omar",
+        on: "bottom",
+      },
+      buttons: [
+        {
+          action() {
+            return this.back();
+          },
+          classes: "shepherd-button-secondary",
+          text: "Back",
+        },
+        {
+          action() {
+            return this.next();
+          },
+          text: "Next",
+        },
+      ],
+      id: "step1",
+    });
+
+    tour.addStep({
+      title: "Login for more fun",
+      text: "Having fun? Make sure to create an account in the upper left.",
+      attachTo: {
+        element: ".omar",
+        on: "bottom",
+      },
+      buttons: [
+        {
+          action() {
+            return this.back();
+          },
+          classes: "shepherd-button-secondary",
+          text: "Back",
+        },
+        {
+          action() {
+            return this.next();
+          },
+          text: "Next",
+        },
+      ],
+      id: "step2",
+    });
+
+    tour.addStep({
+      title: "Exploration is key...",
+      text: "Make sure to look around and try all our features! If you see a distress call, make sure to answer by clicking on it!",
+      attachTo: {
+        element: ".omar",
+        on: "bottom",
+      },
+      buttons: [
+        {
+          action() {
+            return this.back();
+          },
+          classes: "shepherd-button-secondary",
+          text: "Back",
+        },
+        {
+          action() {
+            return this.next();
+          },
+          text: "Next",
+        },
+      ],
+      id: "step3",
+    });
+
+    tour.addStep({
+      title: "You are all set!",
+      text: "This is everything I can teach you for now. Happy exploring, space cadets!",
+      attachTo: {
+        element: ".omar",
+        on: "bottom",
+      },
+      buttons: [
+        {
+          action() {
+            return this.back();
+          },
+          classes: "shepherd-button-secondary",
+          text: "Back",
+        },
+        {
+          action() {
+            return this.complete();
+          },
+          text: "Exit",
+        },
+      ],
+      id: "end",
+    });
+
+    tour.start();
+  }
+</script>
