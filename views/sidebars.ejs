@@ -1,0 +1,313 @@
+<div id="left-sidebar">
+    <div id="dash"></div>
+
+    <span id="show-sidebar">SHOW</span>
+
+    <div id="container" class="draggable-container">
+        <div class="titlebar">
+            <% if (locals.username) { %>
+                <span id="motd">Welcome back, <%= username %>. You've been aboard for <%= Math.trunc(((new Date()) - (new Date(userStartDate)))/86400000) + 1 %> days.</span>
+              <% } else { %>  
+                <span id="motd">Incoming Transmission</span>
+             <% } %>
+
+            <span id="notif"></span>
+        
+            <span id="notif-spin" class="invis">
+                <div class="r1"></div><div class="r2"></div><div class="r3"></div>
+            </span>
+        </div>
+        <div class="titlebar">
+            <span id="drag-handle" class="drag-handle">
+                Click to drag
+            </span>
+            <span>
+             <button id="return-button" class="btn" type="button">Return</button> 
+            </span>
+        </div>
+
+        <div id="compose-container">
+            <form id="compose" method="post" action="/message">
+                <label for="comSender">Sender:</label>
+                <% if (locals.username) { %>
+                    <input id="comSender" type="text" name="sender" maxlength="15" autocomplete="off" placeholder="Your Name" value=<%= username%>>
+                  <% } else { %>  
+                    <input id="comSender" type="text" name="sender" maxlength="15" autocomplete="off" placeholder="Your Name" />
+                 <% } %>				
+                <label for="comSubject">Subject:</label>
+                <input id="comSubject" type="text" name="subject" maxlength="15" autocomplete="off" placeholder="Subject" />
+        
+                <label for="comBody">Message:</label>
+                <textarea id="comBody" name="body" maxlength="1000" style="resize: none" placeholder="Write your message here"></textarea>
+        
+                <div class="button-container">
+                    <button class="b-back btn" type="button">Back</button>
+                    <button id="b-preview" class="btn" type="button">Preview</button>
+                    <button id="b-send" class="btn" type="submit" onclick="validateWords(event);">Broadcast!</button>
+                </div>
+            </form>
+            <div id="preview-container">
+                <div id="preview"></div>
+                <div class="button-container">
+                    <button id="b-pvback" class="btn" type="button">Back</button>
+                </div>
+            </div>
+            <div id="compose-options-container">
+                <div id="compose-options-view">
+                    <!-- Compose options content -->
+                </div>
+                <div class="button-container">
+                    <button id="b-cmpback" class="btn" type="button">Back</button>
+                </div>
+            </div>
+        </div>
+        <div id="view-container">
+            <div class="spinner" id="vspinner">
+                <div class="rect1"></div>
+                <div class "rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+            <div id="view"></div>
+            <div class="button-container">
+                <button id="b-vback" class="btn" type="button">Back</button>
+                <button id="b-flag" class="btn" type="button">Report</button>
+            </div>
+        </div>
+        <div id="t-container">
+            <div id="inbox">
+                <div class="row-header" id="inbox-header">
+                    <span class="left">From</span>
+                    <span class="right">Subject</span>
+                </div>
+                
+            </div>
+            
+            <div id="b-container">
+                <form method="link" action="signup.html" target="_blank">
+                    <button id="b-com" class="btn" type="button">Compose</button>
+                    <button id="b-options" class="btn" type="button">Options</button>
+
+                    <% if (locals.username) { %>
+                        <a href='/logout'><button id="b-register" class="btn" type="button">Logout</button></a>
+                    <% } else { %>  
+                        <a href='signup.html'><button id="b-register" class="btn" type="button">Register/Login</button></a>
+                     <% } %>
+                    
+
+                    <span class="clear"></span>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            fetch('/message')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(messages => {
+                    const inbox = document.getElementById('inbox');
+        
+                    messages.forEach(message => {
+                        const messageElement = document.createElement('div');
+                        messageElement.classList.add('message');
+        
+                        const messageContent = document.createElement('p');
+                        messageContent.textContent = `${message.sender}: ${message.subject}`;
+        
+                        messageContent.addEventListener('click', () => {
+                            toggleMessageDetails(message);
+                        });
+        
+                        messageElement.appendChild(messageContent);
+                        inbox.appendChild(messageElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching messages:', error);
+                });
+        
+            function toggleMessageDetails(message) {
+                const messageDetails = document.createElement('div');
+                messageDetails.classList.add('message-details');
+                messageDetails.addEventListener('click', () => {
+                            toggleMessageDetails(message);
+                        });
+        
+                messageDetails.innerHTML = `
+                    ${message.body}<br><br>
+                    (Sent ${new Date(message.timestamp).toLocaleString()})
+                `;
+        
+                const existingDetails = document.querySelector('.message-details');
+                if (existingDetails) {
+                    existingDetails.remove();
+                } else {
+                    const clickedMessage = event.target;
+                    clickedMessage.parentNode.appendChild(messageDetails);
+                }
+            }
+        </script>
+
+        <div id="options-container">
+            <div id="options-view">
+                <input type="checkbox" id="filter" name="filter" value="Filter" checked="true">
+                <label for="filter"><span></span>Profanity Filter</label>
+            </div>
+            <div class="button-container">
+                <button class="b-back btn" type="button">Back</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href='Space_shooter/Space-shooter.html'><button id="specialButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
+        <a href='Planet_Picker/Planets.html'><button id="educationButton" class="educationalButton Planets" role="button" onclick="redirectToSpaceShooter()">PLANETS</button></a>
+        <a href='Space_Slicer/Space_slicer.html'><button id="spaceSlicerButton" class="space-slicer" role="button" onclick="redirectToSpaceSlicer()">Space Slicer</button></a>
+
+
+
+        <script>
+            function redirectToSpaceSlicer() {
+    window.location.href = 'Space_slicer/Space_slicer.html';
+            }
+            </script>
+        <script>
+        function redirectToSpaceShooter() {
+            
+            window.location.href = 'Space-shooter.html';
+        }
+        </script>
+    </div>
+
+
+    <div id="bg-controls" class="unselectable">
+        <button id="change-background-button" role="button">Change Background</button>
+        <script></script>
+
+
+        <script>
+            $(document).ready(function () {
+const videoBackground = document.getElementById('video-background');
+const videoSources = [
+    "assets/background-video.mp4",
+    "assets/Background-gif1.mp4",
+    "assets/background-gif8.mp4",
+    // "tpl/css/background-gif2.mp4",
+    "assets/background-gif3.mp4",
+    // "tpl/css/background-gif4.mp4",
+    "assets/background-gif5.mp4",
+    "assets/background-gif6.mp4",
+    "assets/background-gif7.mp4"
+    
+
+
+];
+let currentVideoIndex = 0;
+
+$("#change-background-button").click(function () {
+    currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+    videoBackground.src = videoSources[currentVideoIndex];
+    videoBackground.addEventListener('canplay', function () {
+        videoBackground.play();
+    }, { once: true });
+});
+});
+        </script>
+        <script>
+            
+            function checkBackground() {
+let currentBackground = document.getElementById('video-background').src;
+
+let specialButton = document.getElementById('specialButton');
+let educationButton = document.getElementById('educationButton');
+
+if (currentBackground.includes('background-gif7.mp4')) {
+// Show the special button on background number 7
+specialButton.style.display = 'block';
+educationButton.style.display = 'none'; // Hide the educational button on other backgrounds
+} else if (currentBackground.includes('background-gif5.mp4')) {
+// Show the educational button on background number 5
+educationButton.style.display = 'block';
+specialButton.style.display = 'none'; // Hide the special button on other backgrounds
+} else {
+// Hide both buttons on other backgrounds
+specialButton.style.display = 'none';
+educationButton.style.display = 'none';
+}
+if (currentBackground.includes('background-gif3.mp4')) {
+// Show the button on background number 3
+spaceSlicerButton.style.display = 'block';
+} else {
+// Hide the button on other backgrounds
+spaceSlicerButton.style.display = 'none';
+}
+
+
+let clickablesun = document.getElementById('clickablesun')
+let lilguy = document.getElementById('lilguy')
+let spaceship = document.getElementById('spaceship')
+if (currentBackground.includes('background-gif8.mp4')) {
+// Show the clickable sun
+clickablesun.style.display = 'block';
+lilguy.style.display = 'none';
+spaceship.style.display = 'none';
+} else if (currentBackground.includes('background-gif6.mp4')) {
+// Show the clickable alien
+clickablesun.style.display = 'none';
+lilguy.style.display = 'block';
+spaceship.style.display = 'none';
+} else if (currentBackground.includes('background-gif7.mp4')) {
+// Show the clickable alien
+clickablesun.style.display = 'none';
+lilguy.style.display = 'none';
+spaceship.style.display = 'block';
+} else {
+// Hide the sun on other backgrounds
+clickablesun.style.display = 'none';
+lilguy.style.display = 'none';
+spaceship.style.display = 'none';
+}
+}
+
+
+
+// Call the function on page load and when the background changes
+window.onload = checkBackground;
+document.getElementById('video-background').addEventListener('canplay', checkBackground);
+        </script>
+    </div>
+
+</div>
+<div id="right-sidebar">
+    <span id="hide-sidebar">HIDE</span>
+    <h1>Arecibo</h1>
+    <h2>About Arecibo</h2>
+    
+    <section id="sect-what">
+        <p>
+            The <a target="_blank" href="https://en.wikipedia.org/wiki/Arecibo_message">Arecibo message</a>
+            is an interstellar radio broadcast carrying fundamental information about humanity and Earth.
+            Many remember it as our first attempt to communicate with extraterrestrials.
+        </p>
+        <p>
+            With Project Arecibo, you can send out your own messages into the vast expanse of space.
+            Who knows who might read it out there?
+        </p>
+        <p>
+            Press refresh to check for messages. Press compose 
+            to write. Put your name, subject, and message in the 
+            form, and press send. Voila, you have preserved a 
+            note in time. . .
+        </p>
+        <div>
+            <div class="speechBox sbdownleft" :before>Need help? Click me!</div>
+            <img src="images/Kawaii UFO Sprite/omarSpin.gif" class="omar" onclick="OmarTime();"/>
+            
+            </div>
+    </section>
+    <p id="footer">Pixel Plunderers &copy;2024</p>
+</div>
