@@ -154,8 +154,13 @@ app.post('/login', async (req, res) => {
 }
 );
 
-// Serve static files
-app.use(express.static("public"));
+// Middleware to log requests
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
+
 
 // Disable strict MIME checking globally
 app.use((req, res, next) => {
@@ -163,10 +168,19 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve index.html using a relative path
+// Serve static files
+app.use(express.static("public"));
+
+// Serve index.ejs using a relative path
 app.get("/", (req, res) => {
   res.render('index', {username: req.session.username, userStartDate: req.session.userStartDate});
 });
+
+// Serve ReturnOfTheFallen index.html
+// app.use(express.static(path.join(__dirname, 'ReturnOfTheFallenUncompressed')));
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'ReturnOfTheFallenUncompressed', 'index.html'));
+// });
 
 // app.listen(PORT, () => {
 //   console.log(`Server is running on http://${SERVER_IP}:${PORT}`);
