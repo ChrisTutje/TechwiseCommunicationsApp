@@ -55,6 +55,7 @@
     let clickablesun = document.getElementById("clickablesun");
     let lilguy = document.getElementById("lilguy");
     let spaceship = document.getElementById("spaceship");
+    let gameButton = document.getElementById("game");
 
     if (currentBackground.includes("background-gif7.mp4")) {
       specialButton.style.display = "block";
@@ -90,6 +91,11 @@
       clickablesun.style.display = "none";
       lilguy.style.display = "none";
       spaceship.style.display = "none";
+    }
+    if (currentBackground.includes("Background-gif1.mp4")) {
+      gameButton.style.display = "block";
+    } else {
+      gameButton.style.display = "none";
     }
   }
   window.onload = checkBackground;
