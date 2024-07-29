@@ -179,7 +179,7 @@ app.get("/", (req, res) => {
 // Serve ReturnOfTheFallen index.html
 // app.use(express.static(path.join(__dirname, 'ReturnOfTheFallenUncompressed')));
 // app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'ReturnOfTheFallenUncompressed', 'index.html'));
+//   res.sendFile(path.join(__dirname, 'public', 'ReturnOfTheFallenUncompressed', 'index.html'));
 // });
 
 // app.listen(PORT, () => {
