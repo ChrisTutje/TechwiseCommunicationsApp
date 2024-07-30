@@ -167,6 +167,7 @@
         <a href='Space_shooter/Space-shooter.html'><button id="specialButton" class="space-invader" role="button" onclick="redirectToSpaceShooter()">Distress Call!</button></a>
         <a href='Planet_Picker/Planets.html'><button id="educationButton" class="educationalButton Planets" role="button" onclick="redirectToSpaceShooter()">PLANETS</button></a>
         <a href='Space_Slicer/Space_slicer.html'><button id="spaceSlicerButton" class="space-slicer" role="button" onclick="redirectToSpaceSlicer()">Space Slicer</button></a>
+        <a href='/OmarPlanetMatch/index.html'><button id="planetMatchButton" class="match3" role="button" onclick="redirectToMatch3()">Omar's Match 3</button></a>
 
 
 
@@ -179,6 +180,9 @@
         function redirectToSpaceShooter() {
             
             window.location.href = 'Space-shooter.html';
+        }
+        function redirectToMatch3(){
+            window.location.href = '/OmarPlanetMatch/index.html'
         }
         </script>
     </div>
@@ -233,7 +237,8 @@ educationButton.style.display = 'none'; // Hide the educational button on other 
 // Show the educational button on background number 5
 educationButton.style.display = 'block';
 specialButton.style.display = 'none'; // Hide the special button on other backgrounds
-} else {
+} 
+else {
 // Hide both buttons on other backgrounds
 specialButton.style.display = 'none';
 educationButton.style.display = 'none';
@@ -270,6 +275,14 @@ spaceship.style.display = 'block';
 clickablesun.style.display = 'none';
 lilguy.style.display = 'none';
 spaceship.style.display = 'none';
+}
+
+let omarMatch3 = document.getElementById('planetMatchButton');
+if (currentBackground.includes('background-gif8.mp4')){
+    omarMatch3.style.display = 'block';
+}
+else {
+    omarMatch3.style.display = 'none';
 }
 }
 
