@@ -3,10 +3,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Orbitron', sans-serif;
-    background: url('https://www.solarsystemscope.com/textures/download/2k_stars_milky_way.jpg') no-repeat center center fixed;
+    background: url('R.gif') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.788);
     position: relative;
     min-height: 100vh;
 }
@@ -16,16 +16,21 @@ body {
     text-align: center;
     padding: 50px;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin: 50px auto;
+    border-radius: 90px;
+
+    margin: 90px auto;
     width: 80%;
 }
 
 /* Heading Styles */
 h1 {
     font-size: 4em;
+    background: rgba(0, 0, 0, 0.284);
+    border-radius: 90px;
+    border: 2px solid #4400FF;
+    border-radius: 5px;
     margin-bottom: 20px;
-    color: #00e6e6;
+    color: #4062C0;
 }
 
 /* List Styles */
@@ -44,8 +49,8 @@ ul li a {
     color: #fff;
     font-size: 1.5em;
     padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid #00e6e6;
+    background: rgb(0 0 0 / 62%);
+    border: 2px solid #4400FF;
     border-radius: 5px;
     transition: background 0.3s, color 0.3s, border 0.3s;
     position: relative;
@@ -54,7 +59,7 @@ ul li a {
 }
 
 ul li a:hover {
-    background: #00e6e6;
+    background: #8080FF;
     color: #000;
     border: 2px solid #fff;
 }
