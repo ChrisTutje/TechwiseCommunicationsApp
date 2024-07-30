@@ -73,7 +73,7 @@ ul li a:hover {
     height: 40px;
     background: url('R.png') no-repeat center center;
     background-size: contain;
-    transform: translateY(-50%) translateX(-150%);
+    transform: translateY(-50%) translateX(-950%);
     transition: transform 0.3s ease-in-out;
     z-index: 0;
 }
