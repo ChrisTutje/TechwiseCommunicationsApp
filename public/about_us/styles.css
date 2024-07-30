@@ -15,7 +15,7 @@ body {
 .container {
     text-align: center;
     padding: 50px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.572);
     border-radius: 90px;
 
     margin: 90px auto;
@@ -25,12 +25,12 @@ body {
 /* Heading Styles */
 h1 {
     font-size: 4em;
-    background: rgba(0, 0, 0, 0.284);
+    background: rgba(0, 0, 0, 0.75);
     border-radius: 90px;
     border: 2px solid #4400FF;
     border-radius: 5px;
     margin-bottom: 20px;
-    color: #4062C0;
+    color: #80A2FF;
 }
 
 /* List Styles */
@@ -46,7 +46,7 @@ ul li {
 
 ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #C0C0C0;
     font-size: 1.5em;
     padding: 10px 20px;
     background: rgb(0 0 0 / 62%);
@@ -59,7 +59,7 @@ ul li a {
 }
 
 ul li a:hover {
-    background: #8080FF;
+    background: #f4f4f4;
     color: #000;
     border: 2px solid #fff;
 }
@@ -86,7 +86,7 @@ ul li:hover .alien {
 #footer {
     margin-top: 50px;
     font-size: 1em;
-    color: #ccc;
+    color: #0044FF;
 }
 
 /* Starry Background */
