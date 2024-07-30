@@ -176,12 +176,6 @@ app.get("/", (req, res) => {
   res.render('index', {username: req.session.username, userStartDate: req.session.userStartDate});
 });
 
-// Serve ReturnOfTheFallen index.html
-// app.use(express.static(path.join(__dirname, 'ReturnOfTheFallenUncompressed')));
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'ReturnOfTheFallenUncompressed', 'index.html'));
-// });
-
 app.get("/ReturnOfTheFallen", (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'ReturnOfTheFallenUncompressed', 'index.html'));
 });
@@ -191,6 +185,3 @@ app.listen(PORT, () => {
 });
 
  
-// app.listen(PORT, 'localhost', () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);
-// });
