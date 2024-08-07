@@ -11,7 +11,7 @@ body
 	/*background-color:#15181f;*/
 	background-image: url('public/assets/arecibo.png');
 	background-size: cover;
-	height: 100vh;
+	height: 100%;
 	background-position: center;
 
 	font-family:'MS PGothic', 'Anonymous Pro', monospace;
