@@ -1,5 +1,4 @@
 import React from 'react';
-// import { colorPalette } from './ColorPalette';
 
 type ResumeSectionProps = {
   title: string;
@@ -32,7 +31,7 @@ const ResumeContent: React.FC<{ backgroundColor: string }> = ({ backgroundColor 
     <div className="resume-content" style={{ backgroundColor: backgroundColor }}>
       <h1>Christopher Tutje</h1>
       <p>Ankeny, IA (open to relocation) | 515-868-3366 | <a href="mailto:chris.tutje@gmail.com">chris.tutje@gmail.com</a></p>
-      <p><a href="https://www.linkedin.com/in/christopher-tutje-b64188233">LinkedIn</a> | <a href="https://github.com/ChrisTutje">Github</a></p>
+      <p><a href="https://www.linkedin.com/in/christopher-tutje">LinkedIn</a> | <a href="https://github.com/ChrisTutje">Github</a></p>
 
       {sections.map((section, index) => (
         <ResumeSection key={index} title={section.title} content={section.content} />

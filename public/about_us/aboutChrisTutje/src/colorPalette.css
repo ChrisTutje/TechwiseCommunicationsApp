@@ -32,7 +32,7 @@
     --abyssal: #008060;     --jade: #40C0A2;    --aquamarine: #00FFC3; --lagoon: #80FFE1;
     --adriatic: #006080;    --norse: #40A2C0;   --capri: #00C3FF;   --light-capri: #80E1FF;
     --dark-cerulean: #002280; --speech: #4062C0; --cerulean: #0044FF; --pool: #80A2FF;
-    --dark-indigo: #220080; --dragonlord: #6240C0; --indigo: #4400FF; --lilac: #A280FF;
+    --denim: #220080; --dragonlord: #6240C0; --indigo: #4400FF; --lilac: #A280FF;
     --gloam: #600080;       --pheromone: #A240C0; --purple: #C300FF; --orchid: #E180FF;
     --xereus: #800060;      --nusp: #C040A2;    --cerise: #FF00C3;  --grenadine: #FF80E1;
     --oxblood: #800022;     --ruby: #C04062;    --crimson: #FF0044; --blush: #FF80A2;
@@ -63,19 +63,23 @@
     --amaranth: #FF0020;
 
     --automatic: #333;
-    --offwhite: #f0f0f0;
+    --offWhite: #f0f0f0;
     --light: #f8f9fa;
     --dark: #343a40;
     --primary: #007bff;
     --secondary: #6c757d;
     --info: #17a2b8;
+    --hover: #4ed4e9;
     --visited: #551A8B;
     --success: #28a745;
     --warning: #ffc107;
     --danger: #dc3545;
+    --disabled: #808080;
 
     --darkGrey: #404040;
+    --blackWhite: #808080;
     --lightGrey: #C0C0C0;
+    --redGreenBlue: #ffffff;
 
     --darkBrown: #000000;    --mutedBrown: #a9a48e;       --lightBrown: #F5F5DC;
 
@@ -86,4 +90,46 @@
     --darkBlue: #000080;     --mutedBlue: #4040c0;       --lightBlue: #8080FF;
     --darkMagenta: #800080;  --mutedMagenta: #C040C0;    --lightMagenta: #FF80FF;
 
+    --darkOrange: #804000;       --mutedOrange: #C08040; --redYellow: #FF8000;  --lightOrange: #FFC080;
+    --darkChartreuse: #408000;     --mutedChartreuse: #80C040; --yellowGreen: #80FF00; --lightChartreuse: #C0FF80;
+    --darkSpring: #008040;      --mutedSpring: #40C080;    --greenCyan: #00FF80;  --lightSpring: #80FFC0;
+    --darkAzure: #004080;    --mutedAzure: #4080C0;    --cyanBlue: #0080FF;   --lightAzure: #80C0FF;
+    --darkViolet: #400080;  --mutedViolet: #8040C0;  --blueMagenta: #8000FF;  --lightViolet: #C080FF;
+    --darkRose: #800040;        --mutedRose: #C04080;  --redMagenta: #FF0080;    --lightRose: #FF80C0;
+
+    --darkVermilion: #802200;    --mutedVermilion: #C06240;   --redOrange: #FF4400; --lightVermilion: #FFA280;
+    --darkAmber: #806200;       --mutedAmber: #C0A240;   --yellowOrange: #FFC300;   --lightAmber: #FFE180;
+    --darkLime: #608000;       --mutedLime: #A2C040; --yellowChartreuse: #C3FF00;   --lightLime: #E1FF80;
+    --darkHarlequin: #228000;      --mutedHarlequin: #62C040;    --greenChartreuse: #44FF00; --lightHarlequin: #A2FF80;
+    --darkErin: #008022;     --mutedErin: #40C062;    --greenSpring: #00FF44;    --lightErin: #80FFA2;
+    --darkAquamarine: #008060;     --mutedAquamarine: #40C0A2;    --cyanSpring: #00FFC3; --lightAquamarine: #80FFE1;
+    --darkCapri: #006080;    --mutedCapri: #40A2C0;   --cyanAzure: #00C3FF;   --lightCapri: #80E1FF;
+    --darkCerulean: #002280; --mutedCerulean: #4062C0; --blueAzure: #0044FF; --lightCerulean: #80A2FF;
+    --darkIndigo: #220080; --mutedIndigo: #6240C0; --blueViolet: #4400FF; --lightIndigo: #A280FF;
+    --darkPurple: #600080;       --mutedPurple: #A240C0; --magentaViolet: #C300FF; --lightPurple: #E180FF;
+    --darkCerise: #800060;      --mutedCerise: #C040A2;    --magentaRose: #FF00C3;  --lightCerise: #FF80E1;
+    --darkCrimson: #800022;     --mutedCrimson: #C04062;    --crimson: #FF0044; --lightCrimson: #FF80A2;
+
+    --dominant: var(--grey);
+    --surface: var(--offWhite);
+    --accent: var(--red);
+
+    --dominantSurface: color-mix(in srgb, var(--dominant) 50%, var(--surface) 50%);
+    --dominantAccent: color-mix(in srgb, var(--dominant) 50%, var(--accent) 50%);
+    --SurfaceAccent: color-mix(in srgb, var(--surface) 50%, var(--accent) 50%);
+
+    --shadedDominant: color-mix(in srgb, var(--dominant) 50%, black 50%);
+    --muddledDominant: color-mix(in srgb, var(--dominant) 50%, brown 50%);
+    --mutedDominant: color-mix(in srgb, var(--dominant) 50%, grey 50%);
+    --tintedDominant: color-mix(in srgb, var(--dominant) 50%, white 50%);
+
+    --shadedSurface: color-mix(in srgb, var(--surface) 50%, black 50%);
+    --muddledSurface: color-mix(in srgb, var(--surface) 50%, brown 50%);
+    --mutedSurface: color-mix(in srgb, var(--surface) 50%, grey 50%);
+    --tintedSurface: color-mix(in srgb, var(--surface) 50%, white 50%);
+
+    --shadedAccent: color-mix(in srgb, var(--accent) 50%, black 50%);
+    --muddledAccent: color-mix(in srgb, var(--accent) 50%, brown 50%);
+    --mutedAccent: color-mix(in srgb, var(--accent) 50%, grey 50%);
+    --tintedAccent: color-mix(in srgb, var(--accent) 50%, white 50%);
 }

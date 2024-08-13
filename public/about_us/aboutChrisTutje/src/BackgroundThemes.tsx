@@ -55,7 +55,7 @@ const Content: React.FC = () => {
 };
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = () => {
-  const [backgroundColor, setBackgroundColor] = useState('var(--offwhite)');
+  const [backgroundColor, setBackgroundColor] = useState('var(--offWhite)');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = () => {
       setBackgroundColor('var(--automatic)');
       setTheme('dark');
     } else {
-      setBackgroundColor('var(--offwhite)');
+      setBackgroundColor('var(--offWhite)');
       setTheme('light');
     }
   };
