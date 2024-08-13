@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { colorPalette } from './ColorPalette';
+import './colorPalette.css';
 import WelcomeBanner from './Banner';
 import ResumeContent from './Resume';
 
@@ -55,24 +55,24 @@ const Content: React.FC = () => {
 };
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = () => {
-  const [backgroundColor, setBackgroundColor] = useState(colorPalette.offWhite);
+  const [backgroundColor, setBackgroundColor] = useState('var(--offwhite)');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
     document.body.style.backgroundColor = backgroundColor;
     if (theme === 'light') {
-      document.body.style.color = colorPalette.automatic;
+      document.body.style.color = 'var(--automatic)';
     } else {
-      document.body.style.color = colorPalette.celedon; 
+      document.body.style.color = 'var(--celadon)';
     }
   }, [backgroundColor, theme]);
 
   const toggleTheme = () => {
     if (theme === 'light') {
-      setBackgroundColor(colorPalette.automatic);
+      setBackgroundColor('var(--automatic)');
       setTheme('dark');
     } else {
-      setBackgroundColor(colorPalette.offWhite);
+      setBackgroundColor('var(--offwhite)');
       setTheme('light');
     }
   };

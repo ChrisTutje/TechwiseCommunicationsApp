@@ -1,5 +1,4 @@
 @import './colorPalette.css';
-/* @import './colorScheme.css'; */
 
 /* body {
     color: var(--black);
@@ -29,51 +28,51 @@
     color: var(--info);
     text-decoration: underline;
     transition: color 0.0s ease, text-decoration 0.0s ease;
-}
+} */
 
-a:hover {
+/* a:hover {
     color: var(--info);
     text-decoration: none;
-}
+} */
 
-a:visited {
+/* a:visited {
     color: var(--visited);
     text-decoration: none;
-}
+} */
 
-a:focus {
+/* a:focus {
     outline: 0px dashed var(--warning);
     outline-offset: 0px;
-}
+} */
 
-ul {
+/* ul {
     padding-left: 0px;
     margin-left: 20px;
     list-style-type: disc;
-}
+} */
 
-ol {
+/* ol {
     padding-left: 0px;
     margin-left: 20px;
     list-style-type: decimal;
-}
+} */
 
-li {
+/* li {
     color: var(--automatic);
     font-family: Arial, sans-serif;
     font-size: 16px;
     margin-bottom: 0px;
-}
+} */
 
-.column {
+/* .column {
     float: left;
     width: 50%;
     padding: 10px;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
     border-radius: 0px;
-}
+} */
 
-img {
+/* img {
     max-width: 100%;
     height: auto;
     border: 1px solid var(--automatic);
