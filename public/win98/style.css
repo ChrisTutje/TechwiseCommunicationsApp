@@ -212,20 +212,80 @@ label {
     margin: 0 0 2rem 0;
     padding: 0.25rem 0;
 }
+    .desktop-item2 {
+        display: flex;
+    flex-direction: column; /* Ensure items stack vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text horizontally */
+    cursor: pointer;
+    border: 1px solid transparent;
+    max-width: 7rem;
+    width: 7rem; /* Ensure width consistency */
+    justify-content: center;
+    min-height: 6.25rem; /* Ensure height consistency */
+    margin: 0 0 2rem 0;
+    padding: 0.25rem 0;
+    color: white;
+    text-decoration: none; /* Remove underline */
+
+    }
+
+    .desktop-item2 {
+        width: 3rem;
+        height: auto;
+        margin-bottom: 0.5rem;
+    }
+
+
+.desktop-item .text,
+.desktop-item2 .text {
+    margin: 0; /* Remove extra margin */
+    padding: 0; /* Remove extra padding */
+}
+
+a.desktop-item,
+a.desktop-item2 {
+    color: inherit; /* Ensure text color is inherited */
+}
+
+.desktop-item:active .text {
+    background: #005959;
+}
+
+    
+    .desktop-item img,
+    .desktop-item2 img {
+        width: 100%; /* Make the image fit within the icon */
+        height: auto; /* Maintain aspect ratio */
+    }
+.desktop-item2,
 .desktop-item .icon {
     display: block;
 }
+.desktop-item2,
 .desktop-item img {
     width: 3rem;
     margin: 0 0 0.75rem 0;
 }
+
+.desktop-item2,
 a.desktop-item {
     text-decoration: none;
 }
+
+
 .desktop-item .text {
     display: inline;
     margin: 0.5rem 0;
     text-align: center;
+}
+
+.desktop-item2 {
+    margin: 0.5rem 0;
+    text-align: center;
+}
+.desktop-item2 {
+    min-height: 3.85rem;
 }
 
 .desktop-item:active .text {
