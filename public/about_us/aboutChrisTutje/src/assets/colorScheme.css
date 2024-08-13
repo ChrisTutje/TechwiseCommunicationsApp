@@ -1,0 +1,25 @@
+:root {
+    --base: var(--black);
+
+    --dominant: var(--info);
+    --surface: var(--offwhite);
+    --text: var(--automatic);
+
+    --baseDominant: color-mix(in srgb, var(--base) 80%, var(--surface));
+    --baseText: color-mix(in srgb, var(--base) 50%, var(--text) 50%);
+
+    --shadedBase: color-mix(in srgb, var(--base) 50%, black 50%);
+    --muddledBase: color-mix(in srgb, var(--base) 50%, brown 50%);
+    --mutedBase: color-mix(in srgb, var(--base) 50%, grey 50%);
+    --tintedBase: color-mix(in srgb, var(--base) 50%, white 50%);
+
+    --shadedDominant: color-mix(in srgb, var(--dominant) 50%, black 50%);
+    --muddledDominant: color-mix(in srgb, var(--dominant) 50%, brown 50%);
+    --mutedDominant: color-mix(in srgb, var(--dominant) 50%, grey 50%);
+    --tintedDominant: color-mix(in srgb, var(--dominant) 50%, white 50%);
+
+    --shadedText: color-mix(in srgb, var(--text) 50%, black 50%);
+    --muddledText: color-mix(in srgb, var(--text) 50%, brown 50%);
+    --mutedText: color-mix(in srgb, var(--text) 50%, grey 50%);
+    --tintedText: color-mix(in srgb, var(--text) 50%, white 50%);
+}
