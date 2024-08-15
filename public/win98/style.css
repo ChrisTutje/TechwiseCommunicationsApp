@@ -230,21 +230,15 @@ label {
 
     }
 
-    .desktop-item2 {
-        width: 3rem;
-        height: auto;
-        margin-bottom: 0.5rem;
-    }
 
 
-.desktop-item .text,
-.desktop-item2 .text {
+.desktop-item .text {
     margin: 0; /* Remove extra margin */
     padding: 0; /* Remove extra padding */
 }
 
-a.desktop-item,
-a.desktop-item2 {
+
+a.desktop-items {
     color: inherit; /* Ensure text color is inherited */
 }
 
@@ -253,22 +247,16 @@ a.desktop-item2 {
 }
 
     
-    .desktop-item img,
-    .desktop-item2 img {
-        width: 100%; /* Make the image fit within the icon */
-        height: auto; /* Maintain aspect ratio */
-    }
-.desktop-item2,
 .desktop-item .icon {
     display: block;
 }
-.desktop-item2,
+
 .desktop-item img {
     width: 3rem;
     margin: 0 0 0.75rem 0;
 }
 
-.desktop-item2,
+
 a.desktop-item {
     text-decoration: none;
 }
