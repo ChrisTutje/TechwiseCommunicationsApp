@@ -9,6 +9,22 @@ body{
     min-height: 100vh;
     background: #bfc9ff;
 }
+.image1{
+    position: absolute;
+    top: 5px;
+    width: 0.100px;
+    height: 1px;
+}
+.image2{
+    position: relative;
+    top: 5px;
+    width: 5px;
+    height: 5px;
+}
+.box{
+    width: 80px;
+    height: 80px;
+}
 .cradles{
     position: relative;
     display: flex;
