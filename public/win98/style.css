@@ -231,6 +231,37 @@ label {
     }
 
 
+.desktop-item3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text horizontally */
+    cursor: pointer;
+    border: 1px solid transparent;
+    max-width: 7rem;
+    width: 7rem; /* Consistent width */
+    justify-content: center;
+    min-height: 6.25rem; /* Consistent height */
+    margin: 0; /* No margin between items */
+    padding: 0.25rem 0;
+    color: white;
+    text-decoration: none; /* Remove underline */
+}
+
+
+.desktop-item3 img {
+    width: 3rem;
+    margin: 0 0 0.75rem 0;
+}
+
+
+.desktop-item3 .text {
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+
+
 
 .desktop-item .text {
     margin: 0; /* Remove extra margin */

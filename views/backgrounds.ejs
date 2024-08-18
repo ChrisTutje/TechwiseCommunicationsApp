@@ -1,14 +1,15 @@
 <video id="video-background" autoplay muted loop>
   <source src="assets/background-video.mp4" type="video/mp4" />
+  <source src="assets/AreciboArcadebg.mp4" type="video/mp4" />
   <source src="assets/background-gif8.mp4" type="video/mp4" />
-  <source src="assets/Background-gif1.mp4" type="video/mp4" />
   <source src="assets/background-gif2.mp4" type="video/mp4" />
   <source src="assets/background-gif3.mp4" type="video/mp4" />
   <source src="assets/background-gif4.mp4" type="video/mp4" />
   <source src="assets/background-gif5.mp4" type="video/mp4" />
   <source src="assets/background-gif6.mp4" type="video/mp4" />
   <source src="assets/background-gif7.mp4" type="video/mp4" />
-  <source src="assets/AreciboArcadebg.mp4" type="video/mp4" />
+
+
   Your browser does not support the video tag.
 </video>
 
@@ -25,13 +26,13 @@
     const videoBackground = document.getElementById("video-background");
     const videoSources = [
       "assets/background-video.mp4",
-      "assets/Background-gif1.mp4",
+      "assets/AreciboArcadebg.mp4",
       "assets/background-gif8.mp4",
       "assets/background-gif3.mp4",
       "assets/background-gif5.mp4",
       "assets/background-gif6.mp4",
       "assets/background-gif7.mp4",
-      "assets/AreciboArcadebg.mp4",
+
     ];
     let currentVideoIndex = 0;
 
@@ -97,12 +98,15 @@
       clickablesun.style.display = "none";
       lilguy.style.display = "none";
       spaceship.style.display = "none";
+
+      
     }
     if (currentBackground.includes("Background-gif1.mp4")) {
       gameButton.style.display = "block";
     } else {
       gameButton.style.display = "none";
     }
+    
   }
   window.onload = checkBackground;
   document
