@@ -9,17 +9,16 @@ body{
     min-height: 100vh;
     background: #bfc9ff;
 }
+
 .image1{
-    position: absolute;
-    top: 5px;
-    width: 0.100px;
-    height: 1px;
+    position: relative;
+    top: 0;
+    left: 10%;
 }
 .image2{
     position: relative;
-    top: 5px;
-    width: 5px;
-    height: 5px;
+    top: -100%;
+    left: 20%;
 }
 .box{
     width: 80px;
@@ -84,10 +83,10 @@ body{
     right: 15px;
 }
 .cradle:first-child{
-    animation: swing 1s linear infinite;
+    animation: swing 1.5s linear infinite;
 }
 .cradle:last-child{
-    animation: swing2 1s linear infinite;
+    animation: swing2 1.5s linear infinite;
 }
 
 @keyframes swing{
