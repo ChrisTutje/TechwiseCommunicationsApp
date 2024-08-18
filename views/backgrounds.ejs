@@ -8,6 +8,7 @@
   <source src="assets/background-gif5.mp4" type="video/mp4" />
   <source src="assets/background-gif6.mp4" type="video/mp4" />
   <source src="assets/background-gif7.mp4" type="video/mp4" />
+  <source src="assets/AreciboArcadebg.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
@@ -30,6 +31,7 @@
       "assets/background-gif5.mp4",
       "assets/background-gif6.mp4",
       "assets/background-gif7.mp4",
+      "assets/AreciboArcadebg.mp4",
     ];
     let currentVideoIndex = 0;
 
@@ -64,6 +66,10 @@
     } else if (currentBackground.includes("background-gif5.mp4")) {
       educationButton.style.display = "block";
       specialButton.style.display = "none";
+      spaceSlicerButton.style.display = "none";
+    } else if (currentBackground.includes("AreciboArcadebg.mp4")) {
+      specialButton.style.display = "none";
+      educationButton.style.display = "none";
       spaceSlicerButton.style.display = "none";
     } else if (currentBackground.includes("background-gif3.mp4")) {
       spaceSlicerButton.style.display = "block";
