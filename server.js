@@ -16,7 +16,8 @@ const saltRounds = 10;
 
 // Configure database connection
 async function connectToDB() {
-  const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
+  // const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/?retryWrites=true&w=majority`;
+  const uri = "mongodb://localhost:27017";
 
   const client = new MongoClient(uri, {
     serverApi: {
